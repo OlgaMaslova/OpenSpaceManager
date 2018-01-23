@@ -40,26 +40,32 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText passwordEdit;
     private EditText mailEdit;
     private Button btnValider;
+    private Button btnValiderSignIn;
     private String name;
     private String password;
     private String mail;
     private String token;
+    private EditText nameEditSignIn;
+    private EditText passwordEditSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        //connect with layout
         btnValider = (Button) findViewById(R.id.btnValider);
         nameEdit = (EditText) findViewById(R.id.nameTextField);
         passwordEdit =  (EditText) findViewById(R.id.mdpTextField);
         mailEdit = (EditText) findViewById(R.id.mailTextEdit);
+        nameEditSignIn = (EditText) findViewById(R.id.nameTextFieldSignIn);
+        passwordEditSignIn = (EditText) findViewById(R.id.mdpTextFieldSignIn);
+        btnValiderSignIn = (Button) findViewById(R.id.btnValiderSignIn);
 
         //check if token exists already
-        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-        String tokenFromShared = settings.getString("token", null);
+        String tokenFromShared = Tools.getToken(getApplicationContext());
         if (tokenFromShared != null) {
             //Start MainActivity
-            startMain();
+            startMain(getNameFromShared());
         }
 
         btnValider.setOnClickListener(
@@ -68,17 +74,30 @@ public class SignUpActivity extends AppCompatActivity {
                         name = (String) nameEdit.getText().toString();
                         password = (String) passwordEdit.getText().toString();
                         mail = (String) mailEdit.getText().toString();
-                        User user = new User(mail, name, password);
-                        login(user);
+                        UserLogin user = new UserLogin(mail, name, password);
+                        signUp(user);
+                        nameEdit.getText().clear();
+                        passwordEdit.getText().clear();
+                        mailEdit.getText().clear();
                     }
                 }
         );
 
-
-
+        btnValiderSignIn.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        name = (String) nameEditSignIn.getText().toString();
+                        password = (String) passwordEditSignIn.getText().toString();
+                        UserLogin user = new UserLogin(name, password);
+                        signIn(user);
+                        nameEditSignIn.getText().clear();
+                        passwordEditSignIn.getText().clear();
+                    }
+                }
+        );
     }
 
-    private void login(User user) {
+    private void signUp(UserLogin user) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
@@ -91,8 +110,37 @@ public class SignUpActivity extends AppCompatActivity {
             public void onResponse(Call<authResponse> call, Response<authResponse> response) {
                 if (response.code() == 200) {
                     token = response.body().getToken();
-                    SaveToSharedToken(token);
-                    startMain();
+                    SaveToSharedToken(token, name);
+                    startMain(name);
+                } else {
+                    Log.i("olgaLog", "code" + response.errorBody().toString());
+                    Tools.showToast(SignUpActivity.this,"Cannot sign up");
+                }
+            }
+            @Override
+            public void onFailure(Call<authResponse> call, Throwable t) {
+                System.out.println(t.toString());
+                Tools.showToast(SignUpActivity.this, "Erreur réseau");
+
+            }
+        });
+    }
+
+    private void signIn(UserLogin user) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .build();
+
+        OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);
+        Call<authResponse> request=service.singInUser(user);
+        request.enqueue(new Callback<authResponse>() {
+            @Override
+            public void onResponse(Call<authResponse> call, Response<authResponse> response) {
+                if (response.code() == 200) {
+                    token = response.body().getToken();
+                    SaveToSharedToken(token, name);
+                    startMain(name);
                 } else {
                     Log.i("olgaLog", "code" + response.errorBody().toString());
                     Tools.showToast(SignUpActivity.this,"Cannot log in");
@@ -109,19 +157,25 @@ public class SignUpActivity extends AppCompatActivity {
 
 
 
-    private void SaveToSharedToken(String token) {
+    private void SaveToSharedToken(String token, String name) {
         SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("token", token);
+        editor.putString("username", name);
         editor.commit();
     }
 
-    private void startMain() {
+    private void startMain(String name) {
         //start MainActivity
         Intent myIntent = new Intent(getApplicationContext(),MainActivity.class);
+        myIntent.putExtra("username", name);
         startActivityForResult(myIntent,MAIN_ACTIVITY_REQUEST_CODE);
     }
 
-
+    private String getNameFromShared() {
+        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+        String userFromShared = settings.getString("username", null);
+        return userFromShared;
+    }
 
 }

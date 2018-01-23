@@ -15,6 +15,11 @@ public class Tools {
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     };
+    static String getToken(Context context) {
+        SharedPreferences settings = context.getSharedPreferences("MyPrefsFile", 0);
+        String tokenFromShared = settings.getString("token", null);
+        return tokenFromShared;
+    }
 
 
 }
