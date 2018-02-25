@@ -35,4 +35,17 @@ public class Building {
     public Integer getLevel() {
         return level;
     }
+
+    public Integer getGasCostByLevel() {
+        return gasCostByLevel;
+    }
+
+    public Integer getTimeToBuildByLevel() {
+        return timeToBuildByLevel;
+    }
+
+    public Integer getMineralCostByLevel() {
+
+        return mineralCostByLevel;
+    }
 }

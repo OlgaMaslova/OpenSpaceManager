@@ -27,7 +27,6 @@ public class BuildingActivity extends AppCompatActivity {
     private List<String> buildingsNames = new ArrayList<String>();
     private List<Integer> buildingsAmount = new ArrayList<Integer>();
     private Building chosenBuilding;
-    private ListView nmbOfBuildings;
 
 
     @Override
@@ -39,11 +38,10 @@ public class BuildingActivity extends AppCompatActivity {
         getBuildingsRequest(token);
 
         buildingsListView = (ListView) findViewById(R.id.buildingsListView);
-        nmbOfBuildings = (ListView) findViewById(R.id.nmbBuildingsListView);
 
 
         if (buildings != null && buildings.size() > 0) {
-            buildingsListView.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, buildingsNames));
+            buildingsListView.setAdapter(new BuildingArrayAdapter(getApplicationContext(), buildings));
         }
 
         buildingsListView.setOnItemClickListener (new AdapterView.OnItemClickListener() {
@@ -89,8 +87,8 @@ public class BuildingActivity extends AppCompatActivity {
             buildingsNames.add(name);
             buildingsAmount.add(buildings.get(k).getLevel());
         }
-        buildingsListView.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, buildingsNames));
-        nmbOfBuildings.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, buildingsAmount));
+        buildingsListView.setAdapter(new BuildingArrayAdapter(getApplicationContext(), buildings));
+       //nmbOfBuildings.setAdapter(new ArrayAdapter(getApplicationContext(), android.R.layout.simple_list_item_1, buildingsAmount));
     }
 
     private void showDialog(final Integer ID) {

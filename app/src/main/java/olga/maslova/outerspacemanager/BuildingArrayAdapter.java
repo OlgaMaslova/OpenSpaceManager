@@ -20,8 +20,8 @@ public class BuildingArrayAdapter extends ArrayAdapter {
     private final Context context;
     private final List<Building> values;
 
-    public BuildingArrayAdapter(@NonNull Context context, int resource, @NonNull List<Building> buildings) {
-        super(context, resource, buildings);
+    public BuildingArrayAdapter(@NonNull Context context, @NonNull List<Building> buildings) {
+        super(context, R.layout.row_building, buildings);
         this.values = buildings;
         this.context = context;
     }
@@ -31,15 +31,17 @@ public class BuildingArrayAdapter extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.row_building, parent, false);
-        TextView textView = (TextView) rowView.findViewById(R.id.label);
-        ImageView imageView = (ImageView) rowView.findViewById(R.id.icon);
-        textView.setText(values[position]);
-        String s = values[position];
-        if (s.startsWith("iPhone")) {
-            imageView.setImageResource(R.drawable.no);
-        } else {
-            imageView.setImageResource(R.drawable.ok);
+        TextView buildingName = (TextView) rowView.findViewById(R.id.buidingTitle);
+        TextView buildingDetails = (TextView) rowView.findViewById(R.id.buildingDesc);
+        ImageView imageView = (ImageView) rowView.findViewById(R.id.image);
+        Building currentBuilding = values.get(position);
+        buildingName.setText(currentBuilding.getName());
+        buildingDetails.setText("Effect: " + currentBuilding.getEffect()+ " Gas Cost: " +currentBuilding.getGasCostByLevel() + " Mineral Cost: " +currentBuilding.getMineralCostByLevel() +
+                " Time to build: " + currentBuilding.getTimeToBuildByLevel());
+        if (currentBuilding.getName() == "Usine de nanites") {
+            imageView.setImageResource(R.drawable.usine);
         }
+
         return rowView;
     }
 
