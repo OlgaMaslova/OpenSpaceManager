@@ -22,7 +22,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".VueGeneraleActivity" />
         <activity android:name=".BuildingActivity" />
-        <activity android:name=".ChantierActivity"></activity>
+        <activity android:name=".ChantierActivity" />
+        <activity android:name=".ShipDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -148,13 +148,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void startBuilding() {
         Intent myIntent = new Intent(getApplicationContext(),BuildingActivity.class);
-        //myIntent.putExtra("CURRENT_USER", currentUser);
+
         startActivityForResult(myIntent,VUE_GENERALE_REQUEST_CODE);
     }
 
     private void showChantier() {
         Intent myIntent = new Intent(getApplicationContext(),ChantierActivity.class);
-        //myIntent.putExtra("CURRENT_USER", currentUser);
         startActivityForResult(myIntent,VUE_GENERALE_REQUEST_CODE);
     }
 }

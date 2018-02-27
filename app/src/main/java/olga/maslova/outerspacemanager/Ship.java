@@ -1,10 +1,12 @@
 package olga.maslova.outerspacemanager;
 
+import java.io.Serializable;
+
 /**
  * Created by omaslova on 27/02/2018.
  */
 
-public class Ship {
+public class Ship implements Serializable {
 
     private Integer gasCost;
     private Integer life;

@@ -1,7 +1,11 @@
 package olga.maslova.outerspacemanager;
 
+import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -12,7 +16,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ChantierActivity extends AppCompatActivity {
+public class ChantierActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
     private String token;
     private List<Ship> ships;
@@ -22,14 +26,22 @@ public class ChantierActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chantier);
+    }
 
-        token = Tools.getToken(ChantierActivity.this);
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        shipsListView = (ListView) findViewById(R.id.shipsListView);
-
-        if (ships != null && ships.size() > 0) {
-            shipsListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships));
+        FragmentA fragA = (FragmentA) getSupportFragmentManager().findFragmentById(R.id.fragmentA_ID);
+        FragmentShip fragShip = (FragmentShip)getSupportFragmentManager().findFragmentById(R.id.fragmentB_ID);
+        if(fragShip == null|| !fragShip.isInLayout()){
+            ships =  fragA.getShips();
+            Intent i = new Intent(getApplicationContext(),ShipDetailActivity.class);
+            i.putExtra("chosenShip", ships.get(position));
+            startActivity(i);
+        } else {
+            fragShip.fillTextView(ships.get(position));
         }
+
     }
 
 

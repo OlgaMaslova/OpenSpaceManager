@@ -1,10 +1,11 @@
 package olga.maslova.outerspacemanager;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
@@ -15,14 +16,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Created by omaslova on 27/02/2018.
- */
 
 public class FragmentA extends Fragment {
         private ListView shipsListView;
         private List<Ship> ships;
         private String token;
+        private Ship chosenShip;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,9 +32,11 @@ public class FragmentA extends Fragment {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
-            token = Tools.getToken(super.getContext());
+            token = Tools.getToken((ChantierActivity)getActivity());
+            if (ships != null && ships.size() > 0) {
+                shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
+            }
             getChantierRequest(token);
-            shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
             shipsListView.setOnItemClickListener((ChantierActivity)getActivity());
         }
 
@@ -52,17 +53,20 @@ public class FragmentA extends Fragment {
             public void onResponse(Call<getShipsResponse> call, Response<getShipsResponse> response) {
                 if (response.code() == 200) {
                     ships = response.body().getShips();
-                    shipsListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships));
+                    shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
                 } else {
-                    Tools.showToast(ChantierActivity.this, "Cannot get fleet for this user");
+                    Tools.showToast((ChantierActivity)getActivity(), "Cannot get fleet for this user");
                 }
             }
 
             @Override
             public void onFailure(Call<getShipsResponse> call, Throwable t) {
-                Tools.showToast(ChantierActivity.this, "Network error");
+                Tools.showToast((ChantierActivity)getActivity(), "Network error");
             }
         });
+    }
 
+    public List<Ship> getShips() {
+        return ships;
     }
 }
