@@ -9,6 +9,12 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 /**
  * Created by omaslova on 27/02/2018.
  */
@@ -16,6 +22,7 @@ import java.util.List;
 public class FragmentA extends Fragment {
         private ListView shipsListView;
         private List<Ship> ships;
+        private String token;
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +33,36 @@ public class FragmentA extends Fragment {
         @Override
         public void onActivityCreated(Bundle savedInstanceState) {
             super.onActivityCreated(savedInstanceState);
+            token = Tools.getToken(super.getContext());
+            getChantierRequest(token);
             shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
             shipsListView.setOnItemClickListener((ChantierActivity)getActivity());
         }
+
+    private void getChantierRequest(String token) {
+        Retrofit retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .build();
+
+        OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);
+        Call<getShipsResponse> request = service.getFleetList(token);
+        request.enqueue(new Callback<getShipsResponse>() {
+            @Override
+            public void onResponse(Call<getShipsResponse> call, Response<getShipsResponse> response) {
+                if (response.code() == 200) {
+                    ships = response.body().getShips();
+                    shipsListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships));
+                } else {
+                    Tools.showToast(ChantierActivity.this, "Cannot get fleet for this user");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<getShipsResponse> call, Throwable t) {
+                Tools.showToast(ChantierActivity.this, "Network error");
+            }
+        });
+
+    }
 }

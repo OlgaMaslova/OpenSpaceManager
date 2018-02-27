@@ -24,7 +24,7 @@ public class ChantierActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chantier);
 
         token = Tools.getToken(ChantierActivity.this);
-        getChantierRequest(token);
+
         shipsListView = (ListView) findViewById(R.id.shipsListView);
 
         if (ships != null && ships.size() > 0) {
@@ -32,31 +32,6 @@ public class ChantierActivity extends AppCompatActivity {
         }
     }
 
-    private void getChantierRequest(String token) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
-                .build();
 
-        OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);
-        Call<getShipsResponse> request = service.getFleetList(token);
-        request.enqueue(new Callback<getShipsResponse>() {
-            @Override
-            public void onResponse(Call<getShipsResponse> call, Response<getShipsResponse> response) {
-                if (response.code() == 200) {
-                    ships = response.body().getShips();
-                    shipsListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships));
-                } else {
-                    Tools.showToast(ChantierActivity.this, "Cannot get fleet for this user");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<getShipsResponse> call, Throwable t) {
-                Tools.showToast(ChantierActivity.this, "Network error");
-            }
-        });
-
-    }
 
 }
