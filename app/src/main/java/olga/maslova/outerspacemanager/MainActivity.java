@@ -1,16 +1,12 @@
 package olga.maslova.outerspacemanager;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.UUID;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnVueGenerale;
     private Button btnBatiments;
     private Button btnDisconnect;
+    private Button btnFlotte;
+    private Button btnChantier;
     private String token;
     private String username;
     private TextView userTextView;
@@ -38,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
         //connect to layout
         btnDisconnect = (Button) findViewById(R.id.disconnectID);
         btnVueGenerale = (Button) findViewById(R.id.btnGeneral);
+        btnFlotte = (Button) findViewById(R.id.btnFlotte);
+        btnChantier = (Button) findViewById(R.id.btnChantier);
         userTextView = (TextView) findViewById(R.id.Username);
         btnBatiments = (Button) findViewById(R.id.buildingID);
 
@@ -61,6 +61,20 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         startBuilding();
+                    }
+                }
+        );
+        btnFlotte.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                       // showFlotte();
+                    }
+                }
+        );
+        btnChantier.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        showChantier();
                     }
                 }
         );
@@ -134,6 +148,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void startBuilding() {
         Intent myIntent = new Intent(getApplicationContext(),BuildingActivity.class);
+        //myIntent.putExtra("CURRENT_USER", currentUser);
+        startActivityForResult(myIntent,VUE_GENERALE_REQUEST_CODE);
+    }
+
+    private void showChantier() {
+        Intent myIntent = new Intent(getApplicationContext(),ChantierActivity.class);
         //myIntent.putExtra("CURRENT_USER", currentUser);
         startActivityForResult(myIntent,VUE_GENERALE_REQUEST_CODE);
     }

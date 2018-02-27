@@ -21,6 +21,9 @@ public interface OuterSpaceManagerService {
     @POST("auth/login")
     Call<authResponse> singInUser(@Body UserLogin user);
 
+    @GET("ships")
+    Call<getShipsResponse> getFleetList(@Header("x-access-token") String token);
+
     @GET("buildings/list")
     Call<getBuildingsResponse> getBuildingsList(@Header("x-access-token") String token);
 

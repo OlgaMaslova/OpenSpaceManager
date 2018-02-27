@@ -36,10 +36,17 @@ public class BuildingArrayAdapter extends ArrayAdapter {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.image);
         Building currentBuilding = values.get(position);
         buildingName.setText(currentBuilding.getName());
-        buildingDetails.setText("Effect: " + currentBuilding.getEffect()+ " Gas Cost: " +currentBuilding.getGasCostByLevel() + " Mineral Cost: " +currentBuilding.getMineralCostByLevel() +
+        buildingDetails.setText("Level: " + currentBuilding.getLevel() + " Effect: " + currentBuilding.getEffect()+ " Gas Cost: " +currentBuilding.getGasCostByLevel() + " Mineral Cost: " +currentBuilding.getMineralCostByLevel() +
                 " Time to build: " + currentBuilding.getTimeToBuildByLevel());
-        if (currentBuilding.getName() == "Usine de nanites") {
+        String name = currentBuilding.getName();
+        if (name.equals("Usine de nanites")) {
             imageView.setImageResource(R.drawable.usine);
+        }
+        if (name.equals("Spatioport")) {
+            imageView.setImageResource(R.drawable.spaceport);
+        }
+        if (name.equals("Mine automatisée")) {
+            imageView.setImageResource(R.drawable.factory_rainbow);
         }
 
         return rowView;

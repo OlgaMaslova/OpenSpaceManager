@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -22,7 +21,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".VueGeneraleActivity" />
-        <activity android:name=".BuildingActivity"></activity>
+        <activity android:name=".BuildingActivity" />
+        <activity android:name=".ChantierActivity"></activity>
     </application>
 
 </manifest>

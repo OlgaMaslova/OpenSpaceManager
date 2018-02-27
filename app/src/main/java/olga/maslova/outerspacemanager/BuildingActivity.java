@@ -47,8 +47,7 @@ public class BuildingActivity extends AppCompatActivity {
         buildingsListView.setOnItemClickListener (new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String buildingName = (String) buildingsListView.getItemAtPosition(position);
-                chosenBuilding = findBuildingByName(buildingName);
+                chosenBuilding = (Building) buildingsListView.getItemAtPosition(position);
                 showDialog(chosenBuilding.getBuildingId());
             }
         });
@@ -129,7 +128,7 @@ public class BuildingActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<postResponse> call, Response<postResponse> response) {
                 if (response.code() == 200) {
-                    if (response.body().getCode() == "ok") {
+                    if (response.body().getCode().equals("ok")) {
                         Tools.showToast(BuildingActivity.this, "Building " + chosenBuilding.getName() + " is built!");
                     }
                 } else {

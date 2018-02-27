@@ -7,6 +7,9 @@ import java.util.List;
  */
 
 public class getBuildingsResponse {
+
+    private Integer size;
+    private List<Building> buildings;
     public Integer getSize() {
         return size;
     }
@@ -15,6 +18,5 @@ public class getBuildingsResponse {
         return buildings;
     }
 
-    private Integer size;
-    private List<Building> buildings;
+
 }
