@@ -12,14 +12,14 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:name="com.example.fragments.FragmentA"
+            android:name="olga.maslova.outerspacemanager.FragmentA"
             android:id="@+id/fragmentA_ID" />
         <fragment
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:name="com.example.fragments.FragmentB"
-            android:id="@+id/fragmentB_ID"
+            android:name="olga.maslova.outerspacemanager.FragmentShip"
+            android:id="@+id/fragmentShip_ID"
             android:layout_gravity="center_vertical" />
     </LinearLayout>
 

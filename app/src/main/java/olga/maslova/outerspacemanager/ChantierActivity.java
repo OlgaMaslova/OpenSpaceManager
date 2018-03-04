@@ -32,13 +32,14 @@ public class ChantierActivity extends AppCompatActivity implements AdapterView.O
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
         FragmentA fragA = (FragmentA) getSupportFragmentManager().findFragmentById(R.id.fragmentA_ID);
-        FragmentShip fragShip = (FragmentShip)getSupportFragmentManager().findFragmentById(R.id.fragmentB_ID);
+        FragmentShip fragShip = (FragmentShip)getSupportFragmentManager().findFragmentById(R.id.fragmentShip_ID);
         if(fragShip == null|| !fragShip.isInLayout()){
             ships =  fragA.getShips();
             Intent i = new Intent(getApplicationContext(),ShipDetailActivity.class);
             i.putExtra("chosenShip", ships.get(position));
             startActivity(i);
         } else {
+            ships =  fragA.getShips();
             fragShip.fillTextView(ships.get(position));
         }
 
