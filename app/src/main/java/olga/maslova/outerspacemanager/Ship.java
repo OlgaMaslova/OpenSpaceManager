@@ -59,4 +59,8 @@ public class Ship implements Serializable {
     public Integer getSpatioportLevelNeeded() {
         return spatioportLevelNeeded;
     }
+
+    public Integer getShield() {
+        return shield;
+    }
 }

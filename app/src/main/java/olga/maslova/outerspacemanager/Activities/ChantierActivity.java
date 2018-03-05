@@ -1,26 +1,23 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Activities;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ListView;
 
 import java.util.List;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import olga.maslova.outerspacemanager.FragmentShipList;
+import olga.maslova.outerspacemanager.FragmentShip;
+import olga.maslova.outerspacemanager.R;
+import olga.maslova.outerspacemanager.Ship;
 
 public class ChantierActivity extends AppCompatActivity implements AdapterView.OnItemClickListener{
 
-    private String token;
+
     private List<Ship> ships;
-    private ListView shipsListView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +28,7 @@ public class ChantierActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        FragmentA fragA = (FragmentA) getSupportFragmentManager().findFragmentById(R.id.fragmentA_ID);
+        FragmentShipList fragA = (FragmentShipList) getSupportFragmentManager().findFragmentById(R.id.fragmentA_ID);
         FragmentShip fragShip = (FragmentShip)getSupportFragmentManager().findFragmentById(R.id.fragmentShip_ID);
         if(fragShip == null|| !fragShip.isInLayout()){
             ships =  fragA.getShips();
@@ -40,7 +37,7 @@ public class ChantierActivity extends AppCompatActivity implements AdapterView.O
             startActivity(i);
         } else {
             ships =  fragA.getShips();
-            fragShip.fillTextView(ships.get(position));
+            fragShip.updateView(ships.get(position));
         }
 
     }

@@ -5,21 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.Activities.BuildingActivity">
+    tools:context="olga.maslova.outerspacemanager.Activities.BuildingDetailActivity">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/container"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
         <fragment
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:name="olga.maslova.outerspacemanager.FragmentBuildingList"
-            android:id="@+id/fragmentBuildingList_ID" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:name="olga.maslova.outerspacemanager.FragmentBuilding"
+            android:id="@+id/fragmentBuilding_ID"
+            android:layout_gravity="right" />
     </LinearLayout>
-
 
 </android.support.constraint.ConstraintLayout>

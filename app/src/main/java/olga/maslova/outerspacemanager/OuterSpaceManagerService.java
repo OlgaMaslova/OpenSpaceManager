@@ -1,5 +1,12 @@
 package olga.maslova.outerspacemanager;
 
+import java.util.HashMap;
+
+import olga.maslova.outerspacemanager.ResponseRetroFit.authResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getBuildingsResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getShipsResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getUserResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
 import retrofit2.*;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -30,4 +37,6 @@ public interface OuterSpaceManagerService {
     @POST("buildings/create/{buildingId}")
     Call<postResponse> createBuilding(@Path("buildingId") Integer buildingID, @Header("x-access-token") String token);
 
+    @POST("ships/create/{shipId}")
+    Call<postResponse> createShip(@Path("shipId") Integer shipId, @Body HashMap<String, String> keyAmount, @Header("x-access-token") String token);
 }

@@ -1,6 +1,5 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -9,24 +8,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
-import javax.net.ssl.HttpsURLConnection;
-
+import olga.maslova.outerspacemanager.OuterSpaceManagerService;
+import olga.maslova.outerspacemanager.R;
+import olga.maslova.outerspacemanager.Tools;
+import olga.maslova.outerspacemanager.UserLogin;
+import olga.maslova.outerspacemanager.ResponseRetroFit.authResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

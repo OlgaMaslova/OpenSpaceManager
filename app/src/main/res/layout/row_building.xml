@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:background="@drawable/bluebackground">
-
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_centerVertical="true"
-        android:layout_margin="5dp"
-        android:background="#444"
-        android:padding="3dp" />
-
-    <TextView
-        android:id="@+id/buidingTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="5dip"
-        android:layout_toRightOf="@+id/image"
-        android:maxLines="1"
-        android:text="title"
-        android:textColor="@android:color/white"
-        android:textSize="24dip"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/buildingDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/buidingTitle"
-        android:layout_toRightOf="@+id/image"
-        android:ellipsize="end"
-        android:maxLines="3"
-        android:text="desc"
-        android:textColor="@android:color/white"
-        android:textSize="16dip" />
+    android:layout_height="180dp"
+    android:background="@drawable/bluebackground"
+    android:orientation="horizontal"
+    >
 
 
-</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/buidingTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="5dip"
+            android:maxLines="1"
+            android:text="title"
+            android:textColor="@android:color/white"
+            android:textSize="24dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/buildingDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:maxLines="3"
+            android:text="desc"
+            android:textColor="@android:color/white"
+            android:textSize="16dip" />
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:layout_gravity="center_horizontal"
+            android:background="#444"
+            android:padding="3dp" />
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

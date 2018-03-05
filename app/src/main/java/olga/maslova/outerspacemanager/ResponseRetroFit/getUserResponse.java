@@ -1,4 +1,4 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.ResponseRetroFit;
 
 /**
  * Created by omaslova on 16/01/2018.

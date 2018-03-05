@@ -9,14 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by omaslova on 23/01/2018.
  */
 
 public class BuildingArrayAdapter extends ArrayAdapter {
+
     private final Context context;
     private final List<Building> values;
 
@@ -36,18 +38,10 @@ public class BuildingArrayAdapter extends ArrayAdapter {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.image);
         Building currentBuilding = values.get(position);
         buildingName.setText(currentBuilding.getName());
-        buildingDetails.setText("Level: " + currentBuilding.getLevel() + " Effect: " + currentBuilding.getEffect()+ " Gas Cost: " +currentBuilding.getGasCostByLevel() + " Mineral Cost: " +currentBuilding.getMineralCostByLevel() +
-                " Time to build: " + currentBuilding.getTimeToBuildByLevel());
+        buildingDetails.setText("You have : " + currentBuilding.getLevel());
         String name = currentBuilding.getName();
-        if (name.equals("Usine de nanites")) {
-            imageView.setImageResource(R.drawable.usine);
-        }
-        if (name.equals("Spatioport")) {
-            imageView.setImageResource(R.drawable.spaceport);
-        }
-        if (name.equals("Mine automatisée")) {
-            imageView.setImageResource(R.drawable.factory_rainbow);
-        }
+        String imageURL = currentBuilding.getImageUrl();
+        Glide.with(this.context).load(imageURL).into(imageView);
 
         return rowView;
     }

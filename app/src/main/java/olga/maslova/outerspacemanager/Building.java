@@ -1,10 +1,12 @@
 package olga.maslova.outerspacemanager;
 
+import java.io.Serializable;
+
 /**
  * Created by omaslova on 23/01/2018.
  */
 
-public class Building {
+public class Building implements Serializable {
     private Integer level;
     private Integer amountOfEffectByLevel;
     private Integer amountOfEffectLevel0;
@@ -47,5 +49,13 @@ public class Building {
     public Integer getMineralCostByLevel() {
 
         return mineralCostByLevel;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public Integer getAmountOfEffectByLevel() {
+        return amountOfEffectByLevel;
     }
 }

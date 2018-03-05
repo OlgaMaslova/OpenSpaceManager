@@ -12,18 +12,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".SignUpActivity">
+        <activity android:name=".Activities.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".VueGeneraleActivity" />
-        <activity android:name=".BuildingActivity" />
-        <activity android:name=".ChantierActivity" />
-        <activity android:name=".ShipDetailActivity"></activity>
+        <activity android:name=".Activities.MainActivity" />
+        <activity android:name=".Activities.VueGeneraleActivity" />
+        <activity android:name=".Activities.BuildingActivity" />
+        <activity android:name=".Activities.ChantierActivity" />
+        <activity android:name=".Activities.ShipDetailActivity" />
+        <activity android:name=".Activities.BuildingDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -9,13 +9,13 @@ import android.widget.Toast;
  */
 
 public class Tools {
-    static void showToast(Context context, CharSequence text) {
+    static public void showToast(Context context, CharSequence text) {
         //Show Toast
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
     };
-    static String getToken(Context context) {
+    static public String getToken(Context context) {
         SharedPreferences settings = context.getSharedPreferences("MyPrefsFile", 0);
         String tokenFromShared = settings.getString("token", null);
         return tokenFromShared;

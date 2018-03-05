@@ -1,4 +1,4 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import olga.maslova.outerspacemanager.OuterSpaceManagerService;
+import olga.maslova.outerspacemanager.R;
+import olga.maslova.outerspacemanager.Tools;
+import olga.maslova.outerspacemanager.User;
+import olga.maslova.outerspacemanager.UserDataSource;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getUserResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

@@ -27,10 +27,8 @@ public class ShipsArrayAdapter extends ArrayAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.row_ship, parent, false);
         TextView shipName = (TextView) rowView.findViewById(R.id.shipName);
-        TextView shipSize = (TextView) rowView.findViewById(R.id.shipSize);
         Ship currentShip = values.get(position);
         shipName.setText(currentShip.getName());
-        shipSize.setText(" Life: " + currentShip.getLife());
 
         return rowView;
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.ChantierActivity">
+    tools:context="olga.maslova.outerspacemanager.Activities.ChantierActivity">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -17,7 +17,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:name="olga.maslova.outerspacemanager.FragmentA"
+            android:name="olga.maslova.outerspacemanager.FragmentShipList"
             android:id="@+id/fragmentA_ID" />
     </LinearLayout>
 
