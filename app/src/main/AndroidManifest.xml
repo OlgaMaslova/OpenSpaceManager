@@ -24,7 +24,8 @@
         <activity android:name=".Activities.BuildingActivity" />
         <activity android:name=".Activities.ChantierActivity" />
         <activity android:name=".Activities.ShipDetailActivity" />
-        <activity android:name=".Activities.BuildingDetailActivity"></activity>
+        <activity android:name=".Activities.BuildingDetailActivity" />
+        <activity android:name=".Activities.FleetActivity"></activity>
     </application>
 
 </manifest>

@@ -23,6 +23,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
     private static final int VUE_GENERALE_REQUEST_CODE = 2;
+    private static final int VUE_FLEET_REQUEST_CODE = 3;
     private Button btnVueGenerale;
     private Button btnBatiments;
     private Button btnDisconnect;
@@ -73,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         btnFlotte.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
-                       // showFlotte();
+                        showFleet();
                     }
                 }
         );
@@ -161,5 +162,10 @@ public class MainActivity extends AppCompatActivity {
     private void showChantier() {
         Intent myIntent = new Intent(getApplicationContext(),ChantierActivity.class);
         startActivityForResult(myIntent,VUE_GENERALE_REQUEST_CODE);
+    }
+
+    private void showFleet() {
+        Intent myIntent = new Intent(getApplicationContext(),FleetActivity.class);
+        startActivityForResult(myIntent,VUE_FLEET_REQUEST_CODE);
     }
 }
