@@ -24,11 +24,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String PREFS_NAME = "MyPrefsFile";
     private static final int VUE_GENERALE_REQUEST_CODE = 2;
     private static final int VUE_FLEET_REQUEST_CODE = 3;
+    private static final int VUE_GALAXIE_REQUEST_CODE = 4;
     private Button btnVueGenerale;
     private Button btnBatiments;
     private Button btnDisconnect;
     private Button btnFlotte;
     private Button btnChantier;
+    private Button btnGalaxie;
     private String token;
     private String username;
     private TextView userTextView;
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         btnChantier = (Button) findViewById(R.id.btnChantier);
         userTextView = (TextView) findViewById(R.id.Username);
         btnBatiments = (Button) findViewById(R.id.buildingID);
+        btnGalaxie = (Button) findViewById(R.id.btnGalaxie);
 
         token = Tools.getToken(getApplicationContext());
         getUserRequest();
@@ -82,6 +85,13 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         showChantier();
+                    }
+                }
+        );
+        btnGalaxie.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        showGalaxie();
                     }
                 }
         );
@@ -167,5 +177,10 @@ public class MainActivity extends AppCompatActivity {
     private void showFleet() {
         Intent myIntent = new Intent(getApplicationContext(),FleetActivity.class);
         startActivityForResult(myIntent,VUE_FLEET_REQUEST_CODE);
+    }
+
+    private void showGalaxie(){
+        Intent myIntent = new Intent(getApplicationContext(),GalaxieActivity.class);
+        startActivityForResult(myIntent,VUE_GALAXIE_REQUEST_CODE);
     }
 }

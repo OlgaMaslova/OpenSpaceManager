@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark"
+    android:background="@drawable/bluespace"
     tools:context="olga.maslova.outerspacemanager.Activities.SignUpActivity">
 
     <EditText
@@ -15,6 +15,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mailTextEdit" />
 
@@ -22,6 +23,7 @@
         android:id="@+id/mdpTextField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/background_light"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
@@ -35,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:textColor="@android:color/background_light"
         android:text="Identifiant"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
@@ -45,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:textColor="@android:color/background_light"
         android:text="Mot de passe"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
@@ -67,6 +71,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+        android:textColor="@android:color/background_light"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -78,6 +83,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="40dp"
         android:text="Email"
+        android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,6 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="11dp"
         android:text="Sign In"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -100,6 +107,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:textColor="@android:color/background_light"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignInText" />
@@ -112,6 +120,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPassword"
+        android:textColor="@android:color/background_light"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nameTextFieldSignIn" />
 
@@ -122,6 +131,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="Identifiant"
+        android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignInText" />
 
@@ -132,6 +142,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="Mot de passe"
+        android:textColor="@android:color/background_light"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/identifiantTextSignIn" />
 
@@ -152,6 +163,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:text="Sign Up"
+        android:textColor="@android:color/background_light"
         android:textSize="24sp"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

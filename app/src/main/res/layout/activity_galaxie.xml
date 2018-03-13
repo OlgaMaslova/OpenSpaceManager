@@ -5,36 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.Activities.FleetActivity">
+    tools:context="olga.maslova.outerspacemanager.Activities.GalaxieActivity">
 
     <TextView
-        android:id="@+id/FleetTitle"
+        android:id="@+id/playersTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Fleet"
+        android:text="Players"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="0dp" />
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints" />
 
     <ListView
-        android:id="@+id/FleetListView"
+        android:id="@+id/playersListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/FleetTitle"></ListView>
-    <Button
-        android:id="@+id/attackbtn"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_border"
-        android:text="Let's attack!"
-        android:textColor="@android:color/background_light"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@+id/FleetListView"/>
+        app:layout_constraintTop_toBottomOf="@+id/playersTitle"></ListView>
 
 
 </android.support.constraint.ConstraintLayout>

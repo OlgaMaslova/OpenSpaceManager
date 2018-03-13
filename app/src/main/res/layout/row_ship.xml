@@ -1,23 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="90dp"
-    android:background="@drawable/bluebackground">
-
-
+    android:orientation="vertical"
+    android:background="@drawable/bluespace">
     <TextView
         android:id="@+id/shipName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:layout_height="40dp"
         android:layout_marginTop="7dp"
-        android:gravity="center_vertical"
+        android:layout_gravity="center_horizontal"
         android:maxLines="1"
         android:text="title"
         android:textColor="@android:color/white"
         android:textSize="26dip"
         android:textStyle="bold" />
+    <TextView
+        android:id="@+id/amountShip"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:maxLines="1"
+        android:text="amount"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="26dip"
+        android:textStyle="bold" />
 
-
-</RelativeLayout>
+</LinearLayout>

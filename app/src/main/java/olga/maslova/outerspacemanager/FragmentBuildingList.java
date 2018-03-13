@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import olga.maslova.outerspacemanager.Activities.BuildingActivity;
+import olga.maslova.outerspacemanager.Adapters.BuildingArrayAdapter;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getBuildingsResponse;
 import retrofit2.Call;
 import retrofit2.Callback;

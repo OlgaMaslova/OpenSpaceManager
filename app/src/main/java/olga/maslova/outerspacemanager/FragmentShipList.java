@@ -1,6 +1,5 @@
 package olga.maslova.outerspacemanager;
 
-import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +10,7 @@ import android.widget.ListView;
 import java.util.List;
 
 import olga.maslova.outerspacemanager.Activities.ChantierActivity;
+import olga.maslova.outerspacemanager.Adapters.ShipsArrayAdapter;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getShipsResponse;
 import retrofit2.Call;
 import retrofit2.Callback;

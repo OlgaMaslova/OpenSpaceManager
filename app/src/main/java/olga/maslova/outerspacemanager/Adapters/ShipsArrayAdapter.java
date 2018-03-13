@@ -1,4 +1,4 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -10,6 +10,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
+
+import olga.maslova.outerspacemanager.R;
+import olga.maslova.outerspacemanager.Ship;
 
 public class ShipsArrayAdapter extends ArrayAdapter {
     private final Context context;
@@ -27,9 +30,14 @@ public class ShipsArrayAdapter extends ArrayAdapter {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rowView = inflater.inflate(R.layout.row_ship, parent, false);
         TextView shipName = (TextView) rowView.findViewById(R.id.shipName);
+        TextView shipAmount = (TextView) rowView.findViewById(R.id.amountShip);
         Ship currentShip = values.get(position);
         shipName.setText(currentShip.getName());
-
+        if(currentShip.getAmount() != 0) {
+            shipAmount.setText(currentShip.getAmount().toString());
+        } else {
+            shipAmount.setText("");
+        }
         return rowView;
     }
 }
