@@ -1,5 +1,6 @@
 package olga.maslova.outerspacemanager.Activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,21 +10,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import olga.maslova.outerspacemanager.Adapters.ShipsArrayAdapter;
 import olga.maslova.outerspacemanager.OuterSpaceManagerService;
 import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getFleetResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getReportResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
 import olga.maslova.outerspacemanager.Ship;
-import olga.maslova.outerspacemanager.ShipRequest;
 import olga.maslova.outerspacemanager.Tools;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,11 +34,14 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+
 public class AttackActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private String token;
     private Spinner spinner;
     private ArrayList<Ship> yourShips;
     private Button attackBtn;
+    private Button reportBtn;
     private EditText userToAttackEdit;
     private EditText amountToAttackEdit;
     private Ship attackingShip;
@@ -90,14 +96,26 @@ public class AttackActivity extends AppCompatActivity implements AdapterView.OnI
             paramObject.put("shipId", attackingShip.getShipId());
             paramObject.put("amount", Integer.parseInt(amountToAttackEdit.getText().toString()));
             obj.put(paramObject);
+            finalJson.put("ships", obj);
 
-            Call<postResponse> request = service.postAttack(userToAttackEdit.getText().toString(), paramObject, token);
+            JsonParser jsonParser = new JsonParser();
+            JsonObject gsonObject = (JsonObject) jsonParser.parse(finalJson.toString());
+            Call<postResponse> request = service.postAttack(userToAttackEdit.getText().toString(), gsonObject, token);
             request.enqueue(new Callback<postResponse>() {
                 @Override
                 public void onResponse(Call<postResponse> call, Response<postResponse> response) {
                     if (response.code() == 200) {
                         if (response.body().getCode().equals("ok")) {
                             Tools.showToast(getApplicationContext(), "Attack is finished!");
+                            reportBtn = (Button) findViewById(R.id.getReportBtn);
+                            reportBtn.setVisibility(View.VISIBLE);
+                            reportBtn.setOnClickListener(
+                                    new View.OnClickListener() {
+                                        public void onClick(View v) {
+                                            showReportActivity();
+                                        }
+                                    }
+                            );
                         }
                     } else {
                         Tools.showToast(getApplicationContext(), "Error" + response.code());
@@ -113,4 +131,10 @@ public class AttackActivity extends AppCompatActivity implements AdapterView.OnI
             e.printStackTrace();
         }
     }
+
+    private void showReportActivity(){
+        Intent myIntent = new Intent(getApplicationContext(),ShowReportActivity.class);
+        startActivityForResult(myIntent, 1);
+    }
+
 }

@@ -36,15 +36,7 @@ public class FleetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);setContentView(R.layout.activity_fleet);
         fleetListView = (ListView) findViewById(R.id.FleetListView);
         token = Tools.getToken(getApplicationContext());
-        attackBtn = (Button) findViewById(R.id.attackbtn);
         getFleetRequest(token);
-        attackBtn.setOnClickListener(
-                new View.OnClickListener() {
-                    public void onClick(View v) {
-                        showAttackActivity();
-                    }
-                }
-        );
     }
 
     private void getFleetRequest(String token) {
@@ -59,13 +51,22 @@ public class FleetActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<getFleetResponse> call, Response<getFleetResponse> response) {
                 if (response.code() == 200) {
-                    size =  response.body().getSize();
+
+                    size = response.body().getSize();
                     if (size == 0) {
                         Tools.showToast(getApplicationContext(), "You have no ships yet!");
                     } else {
                         ships = response.body().getShips();
                         arrayShips = new ArrayList<Ship>(ships);
                         fleetListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships));
+                        attackBtn = (Button) findViewById(R.id.attackbtn);
+                        attackBtn.setOnClickListener(
+                                new View.OnClickListener() {
+                                    public void onClick(View v) {
+                                        showAttackActivity();
+                                    }
+                                }
+                        );
                     }
                 } else {
                     Tools.showToast(getApplicationContext(), "Cannot get fleet for this user");

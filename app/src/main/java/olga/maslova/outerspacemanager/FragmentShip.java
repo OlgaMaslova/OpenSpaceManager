@@ -60,6 +60,9 @@ public class FragmentShip extends Fragment {
         if (ship.getShipId() == 1) {
             shipImage.setImageResource(R.drawable.chasseur_lourd);
         }
+        if (ship.getShipId() == 4) {
+            shipImage.setImageResource(R.drawable.death_star);
+        }
     }
 
     private void showDialog(final Integer ID) {

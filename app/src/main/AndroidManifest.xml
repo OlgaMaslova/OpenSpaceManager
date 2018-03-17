@@ -27,7 +27,8 @@
         <activity android:name=".Activities.BuildingDetailActivity" />
         <activity android:name=".Activities.FleetActivity" />
         <activity android:name=".Activities.GalaxieActivity" />
-        <activity android:name=".Activities.AttackActivity"></activity>
+        <activity android:name=".Activities.AttackActivity" />
+        <activity android:name=".Activities.ShowReportActivity"></activity>
     </application>
 
 </manifest>

@@ -11,6 +11,7 @@ import olga.maslova.outerspacemanager.ResponseRetroFit.authResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getBuildingsResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getFleetResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getGalaxieResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getReportResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getShipsResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getUserResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
@@ -47,6 +48,9 @@ public interface OuterSpaceManagerService {
     @GET("users/{from}/{limit}")
     Call<getGalaxieResponse> getGalaxie(@Path("from") Integer from, @Path("limit") Integer limit, @Header("x-access-token") String token);
 
+    @GET("reports/{from}/{limit}")
+    Call<getReportResponse> getReport(@Path("from") Integer from, @Path("limit") Integer limit, @Header("x-access-token") String token);
+
     @POST("buildings/create/{buildingId}")
     Call<postResponse> createBuilding(@Path("buildingId") Integer buildingID, @Header("x-access-token") String token);
 
@@ -54,7 +58,7 @@ public interface OuterSpaceManagerService {
     Call<postResponse> createShip(@Path("shipId") Integer shipId, @Body HashMap<String, String> keyAmount, @Header("x-access-token") String token);
 
     @POST("fleet/attack/{userName}")
-    Call<postResponse> postAttack(@Path("userName") String userName, @Body JSONObject object, @Header("x-access-token") String token);
+    Call<postResponse> postAttack(@Path("userName") String userName, @Body JsonObject object, @Header("x-access-token") String token);
 
 
 }

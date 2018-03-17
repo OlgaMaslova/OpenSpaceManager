@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 public class Ship implements Serializable {
 
-    private Integer amount = 0;
+    private Integer amount;
     private Integer gasCost;
     private Integer life;
     private Integer maxAttack;

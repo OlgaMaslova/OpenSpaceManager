@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private String token;
     private String username;
     private TextView userTextView;
+    private TextView scoreTextView;
     //database
     private UserDataSource userDataSource;
 
@@ -50,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
         userTextView = (TextView) findViewById(R.id.Username);
         btnBatiments = (Button) findViewById(R.id.buildingID);
         btnGalaxie = (Button) findViewById(R.id.btnGalaxie);
+        scoreTextView = (TextView) findViewById(R.id.Points);
 
         token = Tools.getToken(getApplicationContext());
         getUserRequest();
@@ -124,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
                 if (response.code()==200) {
                     username = response.body().getUsername();
                     userTextView.setText(username);
+                    scoreTextView.setText(response.body().getPoints());
                     refreshUserDB(response.body());
                 } else {
                     Tools.showToast(getApplicationContext(), "Cannot get information for this user");

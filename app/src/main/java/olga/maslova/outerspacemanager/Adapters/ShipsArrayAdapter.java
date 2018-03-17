@@ -33,7 +33,7 @@ public class ShipsArrayAdapter extends ArrayAdapter {
         TextView shipAmount = (TextView) rowView.findViewById(R.id.amountShip);
         Ship currentShip = values.get(position);
         shipName.setText(currentShip.getName());
-        if(currentShip.getAmount() != 0) {
+        if(currentShip.getAmount() != null) {
             shipAmount.setText(currentShip.getAmount().toString());
         } else {
             shipAmount.setText("");
