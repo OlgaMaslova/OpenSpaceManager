@@ -12,7 +12,7 @@ public class getReportResponse {
 
     private List<Report> reports;
 
-    class Report {
+    public class Report {
         private List<Ship> attackerFleet;
         private FleetAfterBattle attackerFleetAfterBattle;
         private String date;
@@ -114,7 +114,7 @@ public class getReportResponse {
         }
     }
 
-    class FleetAfterBattle {
+    public class FleetAfterBattle {
         private int capacity;
         private List<Ship> fleet;
         private int survivingShips;
@@ -142,5 +142,9 @@ public class getReportResponse {
         public void setSurvivingShips(int survivingShips) {
             this.survivingShips = survivingShips;
         }
+    }
+
+    public List<Report> getReports() {
+        return reports;
     }
 }

@@ -33,8 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnGalaxie;
     private String token;
     private String username;
-    private TextView userTextView;
-    private TextView scoreTextView;
+    private TextView userTextView, gasTextView, mineralTextView, scoreTextView;
+
     //database
     private UserDataSource userDataSource;
 
@@ -52,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
         btnBatiments = (Button) findViewById(R.id.buildingID);
         btnGalaxie = (Button) findViewById(R.id.btnGalaxie);
         scoreTextView = (TextView) findViewById(R.id.Points);
+        gasTextView = (TextView) findViewById(R.id.GasPoints);
+        mineralTextView = (TextView) findViewById(R.id.MineralsPoints);
 
         token = Tools.getToken(getApplicationContext());
         getUserRequest();
@@ -127,6 +129,8 @@ public class MainActivity extends AppCompatActivity {
                     username = response.body().getUsername();
                     userTextView.setText(username);
                     scoreTextView.setText(response.body().getPoints());
+                    gasTextView.setText(Integer.toString((int)response.body().getGas()));
+                    mineralTextView.setText(Integer.toString((int) response.body().getMinerals()));
                     refreshUserDB(response.body());
                 } else {
                     Tools.showToast(getApplicationContext(), "Cannot get information for this user");

@@ -30,6 +30,7 @@ public class FleetActivity extends AppCompatActivity {
     private ListView fleetListView;
     private Button attackBtn;
     private ArrayList<Ship> arrayShips;
+    private Button reportBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,15 @@ public class FleetActivity extends AppCompatActivity {
         fleetListView = (ListView) findViewById(R.id.FleetListView);
         token = Tools.getToken(getApplicationContext());
         getFleetRequest(token);
+        reportBtn = (Button) findViewById(R.id.getReportBtn);
+        reportBtn.setVisibility(View.VISIBLE);
+        reportBtn.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        showReportActivity();
+                    }
+                }
+        );
     }
 
     private void getFleetRequest(String token) {
@@ -84,5 +94,10 @@ public class FleetActivity extends AppCompatActivity {
         Intent myIntent = new Intent(getApplicationContext(),AttackActivity.class);
         myIntent.putExtra("yourShips", arrayShips);
         startActivityForResult(myIntent,2);
+    }
+
+    private void showReportActivity(){
+        Intent myIntent = new Intent(getApplicationContext(),ShowReportActivity.class);
+        startActivityForResult(myIntent, 1);
     }
 }

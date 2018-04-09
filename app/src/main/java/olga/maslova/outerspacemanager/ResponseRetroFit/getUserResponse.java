@@ -5,18 +5,18 @@ package olga.maslova.outerspacemanager.ResponseRetroFit;
  */
 
 public class getUserResponse {
-    private String gas;
+    private double gas;
     private String gasModifier;
-    private String minerals;
+    private double minerals;
     private String mineralsModifier;
     private String points;
     private String username;
 
-    public String getGas() {
+    public double getGas() {
         return gas;
     }
 
-    public String getMinerals() {
+    public double getMinerals() {
         return minerals;
     }
 
@@ -28,7 +28,7 @@ public class getUserResponse {
         return username;
     }
 
-    public getUserResponse(String pUsername, String pPoints, String pGas, String pMinerals) {
+    public getUserResponse(String pUsername, String pPoints, double pGas, double pMinerals) {
         this.gas = pGas;
         this.username = pUsername;
         this.minerals = pMinerals;

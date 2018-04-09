@@ -31,8 +31,8 @@ public class VueGeneraleActivity extends AppCompatActivity {
         currentUser = (User) getIntent().getSerializableExtra("CURRENT_USER");
         List<String> parameters =  Arrays.asList("gas", "minerals");
         parametersList.setAdapter(new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, parameters));
-        List<Double> values = Arrays.asList(Double.parseDouble(currentUser.getGas()), Double.parseDouble(currentUser.getMinerals()));
-        valuesList.setAdapter(new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, values));
+        //List<Double> values = Arrays.asList(Double.parseDouble(currentUser.getGas()), Double.parseDouble(currentUser.getMinerals()));
+       // valuesList.setAdapter(new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1, values));
         userView.setText(currentUser.getUsername());
         scoreView.setText(currentUser.getPoints());
 

@@ -68,4 +68,19 @@ public class Ship implements Serializable {
     public Integer getAmount() {
         return amount;
     }
+
+    public void setShipName(Integer shipId) {
+        switch (shipId) {
+            case 0:
+                this.name = "Chasseur léger";
+            case 1:
+                this.name = "Chassuer lourd";
+            case 2:
+                this.name = "Sonde d'espionnage";
+            case 3:
+                this.name = "Destroyer";
+            case 4:
+                this.name = "Etoile de la mort";
+        }
+    }
 }

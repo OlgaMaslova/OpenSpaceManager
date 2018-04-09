@@ -41,7 +41,11 @@ public class BuildingArrayAdapter extends ArrayAdapter {
         ImageView imageView = (ImageView) rowView.findViewById(R.id.image);
         Building currentBuilding = values.get(position);
         buildingName.setText(currentBuilding.getName());
-        buildingDetails.setText("You have : " + currentBuilding.getLevel());
+        if (currentBuilding.isBuilding()) {
+            buildingDetails.setText("Level : " + currentBuilding.getLevel() + ". Currently is building...");
+        } else {
+            buildingDetails.setText("Level : " + currentBuilding.getLevel());
+        }
         String name = currentBuilding.getName();
         String imageURL = currentBuilding.getImageUrl();
         Glide.with(this.context).load(imageURL).into(imageView);

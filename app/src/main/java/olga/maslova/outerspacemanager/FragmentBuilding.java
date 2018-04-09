@@ -54,9 +54,13 @@ public class FragmentBuilding extends Fragment {
         currentBuilding = building;
         buildingName.setText(building.getName());
         buildDesc.setText("Effect : " + building.getEffect() + "\n"+ "Gas Cost: " +currentBuilding.getGasCostByLevel() + "\n"+ "Mineral Cost: " +currentBuilding.getMineralCostByLevel() + "\n" +
-                "Time to build: " + currentBuilding.getTimeToBuildByLevel() + "\n" + "Amount of Effect by level: " + currentBuilding.getAmountOfEffectByLevel());
+                "Time to build in seconds: " + (currentBuilding.getTimeToBuildByLevel()*currentBuilding.getLevel()+currentBuilding.getTimeToBuildLevel0()) + "\n" + "Amount of Effect by level: " + currentBuilding.getAmountOfEffectByLevel());
         String imageURL = building.getImageUrl();
         Glide.with(this).load(imageURL).into(buildingImage);
+        if (currentBuilding.isBuilding()) {
+            btnBuild.setEnabled(false);
+            btnBuild.setAlpha((float) 0.5);
+        }
     }
 
     private void showDialog(final Integer ID) {
@@ -98,7 +102,7 @@ public class FragmentBuilding extends Fragment {
             public void onResponse(Call<postResponse> call, Response<postResponse> response) {
                 if (response.code() == 200) {
                     if (response.body().getCode().equals("ok")) {
-                        Tools.showToast((BuildingDetailActivity)getActivity(), "Building " + currentBuilding.getName() + " is built!");
+                        Tools.showToast((BuildingDetailActivity)getActivity(), "Started building " + currentBuilding.getName() + "!");
                     }
                 } else {
                     Tools.showToast((BuildingDetailActivity)getActivity(), "Error" + response.code());

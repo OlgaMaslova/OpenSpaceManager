@@ -47,6 +47,12 @@ public class FragmentBuildingList extends Fragment {
         buildingsListView.setOnItemClickListener((BuildingActivity)getActivity());
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        getBuildingsRequest(token);
+    }
+
     private void getBuildingsRequest(String token) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())

@@ -41,7 +41,7 @@ public class AttackActivity extends AppCompatActivity implements AdapterView.OnI
     private Spinner spinner;
     private ArrayList<Ship> yourShips;
     private Button attackBtn;
-    private Button reportBtn;
+
     private EditText userToAttackEdit;
     private EditText amountToAttackEdit;
     private Ship attackingShip;
@@ -107,15 +107,7 @@ public class AttackActivity extends AppCompatActivity implements AdapterView.OnI
                     if (response.code() == 200) {
                         if (response.body().getCode().equals("ok")) {
                             Tools.showToast(getApplicationContext(), "Attack is finished!");
-                            reportBtn = (Button) findViewById(R.id.getReportBtn);
-                            reportBtn.setVisibility(View.VISIBLE);
-                            reportBtn.setOnClickListener(
-                                    new View.OnClickListener() {
-                                        public void onClick(View v) {
-                                            showReportActivity();
-                                        }
-                                    }
-                            );
+
                         }
                     } else {
                         Tools.showToast(getApplicationContext(), "Error" + response.code());
@@ -132,9 +124,6 @@ public class AttackActivity extends AppCompatActivity implements AdapterView.OnI
         }
     }
 
-    private void showReportActivity(){
-        Intent myIntent = new Intent(getApplicationContext(),ShowReportActivity.class);
-        startActivityForResult(myIntent, 1);
-    }
+
 
 }

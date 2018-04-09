@@ -58,4 +58,12 @@ public class Building implements Serializable {
     public Integer getAmountOfEffectByLevel() {
         return amountOfEffectByLevel;
     }
+
+    public Integer getTimeToBuildLevel0() {
+        return timeToBuildLevel0;
+    }
+
+    public boolean isBuilding() {
+        return building;
+    }
 }

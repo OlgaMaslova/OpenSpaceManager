@@ -1,9 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bluespace"
+    android:orientation="vertical"
     tools:context="olga.maslova.outerspacemanager.Activities.ShowReportActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/RaportTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Last attacks's Report"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@android:color/white"
+        android:textSize="36sp" />
+    <TextView
+        android:id="@+id/userAttacked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="User attacked:"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+
+    <TextView
+        android:id="@+id/GasWon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Gas Won:"
+        android:layout_gravity="left"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+    <TextView
+                android:id="@+id/MineralsWon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:text="Minerals Won:"
+        android:layout_gravity="left"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"/>
+    <TextView
+        android:id="@+id/AttackingShips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="You sent:"
+        android:layout_gravity="left"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+    <TextView
+        android:id="@+id/SurvivedShips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Ships survived:"
+        android:layout_gravity="left"
+        android:textColor="@android:color/white"
+        android:textSize="24sp" />
+
+
+
+</LinearLayout>
