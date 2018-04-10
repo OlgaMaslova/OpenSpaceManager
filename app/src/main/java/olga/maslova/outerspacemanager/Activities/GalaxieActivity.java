@@ -36,7 +36,7 @@ public class GalaxieActivity extends AppCompatActivity {
     private void getAllUsers(String token) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .baseUrl(getResources().getString(getResources().getIdentifier("base_url", "string", getPackageName())))
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);

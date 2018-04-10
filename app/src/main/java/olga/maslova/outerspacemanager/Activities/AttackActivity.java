@@ -85,7 +85,7 @@ public class AttackActivity extends AppCompatActivity implements AdapterView.OnI
     private void attackRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .baseUrl(getResources().getString(getResources().getIdentifier("base_url", "string", getPackageName())))
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);

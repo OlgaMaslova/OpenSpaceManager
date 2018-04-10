@@ -94,7 +94,7 @@ public class FragmentShip extends Fragment {
     private void createShipRequest(Integer shipID) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .baseUrl(getResources().getString(getResources().getIdentifier("base_url", "string", getActivity().getPackageName())))
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);

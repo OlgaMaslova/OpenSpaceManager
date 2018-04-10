@@ -2,8 +2,11 @@ package olga.maslova.outerspacemanager.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -64,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
+
         btnDisconnect.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
@@ -117,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
     private void getUserRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .baseUrl(getResources().getString(getResources().getIdentifier("base_url", "string", getPackageName())))
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);

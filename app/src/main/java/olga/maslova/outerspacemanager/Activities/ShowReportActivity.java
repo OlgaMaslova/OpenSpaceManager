@@ -39,7 +39,7 @@ public class ShowReportActivity extends AppCompatActivity {
     private void getReportRequest() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .baseUrl(getResources().getString(getResources().getIdentifier("base_url", "string", getPackageName())))
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);

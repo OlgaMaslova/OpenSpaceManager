@@ -92,7 +92,7 @@ public class FragmentBuilding extends Fragment {
     private void createBuildingRequest(Integer buildingID) {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
-                .baseUrl("https://outer-space-manager.herokuapp.com/api/v1/")
+                .baseUrl((getResources().getString(getResources().getIdentifier("base_url", "string", getActivity().getPackageName()))))
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);
