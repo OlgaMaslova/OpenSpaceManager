@@ -40,7 +40,7 @@ public class GalaxieActivity extends AppCompatActivity {
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);
-        Call<getGalaxieResponse> request = service.getGalaxie(1, 15, token);
+        Call<getGalaxieResponse> request = service.getGalaxie(0, 15, token);
         request.enqueue(new Callback<getGalaxieResponse>() {
             @Override
             public void onResponse(Call<getGalaxieResponse> call, Response<getGalaxieResponse> response) {

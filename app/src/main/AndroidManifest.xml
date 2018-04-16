@@ -21,14 +21,19 @@
         </activity>
         <activity android:name=".Activities.MainActivity" />
         <activity android:name=".Activities.VueGeneraleActivity" />
-        <activity android:name=".Activities.BuildingActivity" />
+        <activity android:name=".Activities.BuildingActivity"
+            android:theme="@style/AppTheme.BuildingActivity"
+        />
         <activity android:name=".Activities.ChantierActivity" />
         <activity android:name=".Activities.ShipDetailActivity" />
-        <activity android:name=".Activities.BuildingDetailActivity" />
+        <activity android:name=".Activities.BuildingDetailActivity"
+            android:theme="@style/AppTheme.BuildingDetail"
+            />
         <activity android:name=".Activities.FleetActivity" />
         <activity android:name=".Activities.GalaxieActivity" />
         <activity android:name=".Activities.AttackActivity" />
-        <activity android:name=".Activities.ShowReportActivity"></activity>
+        <activity android:name=".Activities.ShowReportActivity" />
+        <activity android:name=".Activities.ResearchActivity"></activity>
     </application>
 
 </manifest>

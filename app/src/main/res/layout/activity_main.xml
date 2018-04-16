@@ -8,109 +8,102 @@
     android:orientation="vertical"
     tools:context="olga.maslova.outerspacemanager.Activities.MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="220dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="220dp"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/Username"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="UserName"
+                android:textColor="@android:color/background_light"
+                android:textSize="36sp" />
 
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/Username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:text="UserName"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="36sp"
-                    />
+            <TextView
+                android:id="@+id/Points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="14dp"
+                android:text="Points"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp" />
 
-                <TextView
-                    android:id="@+id/Points"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="14dp"
-                    android:text="Points"
-                    android:layout_gravity="center"
-                    android:textColor="@android:color/background_light"
-                    android:textSize="24sp"
-                    />
-                <Button
-                    android:id="@+id/refresh"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Refresh"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="10dp"/>
 
-            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-                <LinearLayout
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/GasImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="18dp"
+                    android:src="@drawable/gas" />
+
+                <TextView
+                    android:id="@+id/GasPoints"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/GasImage"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="18dp"
-                        android:src="@drawable/gas"
-                        />
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="26dp"
+                    android:text="Gas"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp" />
 
-                    <TextView
-                        android:id="@+id/GasPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="26dp"
-                        android:text="Gas"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="24sp"
-                        />
+            </LinearLayout>
 
-                </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
-                <LinearLayout
+                <ImageView
+                    android:id="@+id/MineralImage"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:src="@drawable/mineral" />
+
+                <TextView
+                    android:id="@+id/MineralsPoints"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:id="@+id/MineralImage"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="16dp"
-                        android:src="@drawable/mineral"
-                        />
-
-                    <TextView
-                        android:id="@+id/MineralsPoints"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:text="Minerals"
-                        android:textColor="@android:color/background_light"
-                        android:textSize="24sp"
-                        />
-
-                </LinearLayout>
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="Minerals"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="24sp" />
 
             </LinearLayout>
 
         </LinearLayout>
+
+    </LinearLayout>
     <Button
         android:id="@+id/btnGeneral"
         android:layout_width="match_parent"
@@ -140,7 +133,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button4" />
     <Button
-            android:id="@+id/button4"
+            android:id="@+id/research"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
@@ -188,15 +181,29 @@
             android:text="Galaxie"
             android:textColor="@android:color/background_light"
             android:textSize="36sp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="14dp"
+            android:text="Refresh" />
+
         <Button
             android:id="@+id/disconnectID"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:text="Disconnect"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"/>
-
-
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/refresh"
+            android:layout_marginRight="8dp"
+            android:text="Disconnect" />
+    </RelativeLayout>
 
 </LinearLayout>

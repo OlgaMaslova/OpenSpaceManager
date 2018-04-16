@@ -30,10 +30,12 @@ public class MainActivity extends AppCompatActivity {
     private static final int VUE_GALAXIE_REQUEST_CODE = 4;
     private Button btnVueGenerale;
     private Button btnBatiments;
+    private Button btnResearch;
     private Button btnDisconnect;
     private Button btnFlotte;
     private Button btnChantier;
     private Button btnGalaxie;
+    private Button btnRefresh;
     private String token;
     private String username;
     private TextView userTextView, gasTextView, mineralTextView, scoreTextView;
@@ -51,9 +53,11 @@ public class MainActivity extends AppCompatActivity {
         btnVueGenerale = (Button) findViewById(R.id.btnGeneral);
         btnFlotte = (Button) findViewById(R.id.btnFlotte);
         btnChantier = (Button) findViewById(R.id.btnChantier);
+        btnResearch = (Button) findViewById(R.id.research);
         userTextView = (TextView) findViewById(R.id.Username);
         btnBatiments = (Button) findViewById(R.id.buildingID);
         btnGalaxie = (Button) findViewById(R.id.btnGalaxie);
+        btnRefresh = (Button) findViewById(R.id.refresh);
         scoreTextView = (TextView) findViewById(R.id.Points);
         gasTextView = (TextView) findViewById(R.id.GasPoints);
         mineralTextView = (TextView) findViewById(R.id.MineralsPoints);
@@ -68,10 +72,26 @@ public class MainActivity extends AppCompatActivity {
                 }
         );
 
+        btnResearch.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        showResearch();
+                    }
+                }
+        );
+
         btnDisconnect.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
                         disconnect(username);
+                    }
+                }
+        );
+
+        btnRefresh.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        getUserRequest();
                     }
                 }
         );
@@ -192,6 +212,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void showGalaxie(){
         Intent myIntent = new Intent(getApplicationContext(),GalaxieActivity.class);
+        startActivityForResult(myIntent,VUE_GALAXIE_REQUEST_CODE);
+    }
+
+    private void showResearch(){
+        Intent myIntent = new Intent(getApplicationContext(),ResearchActivity.class);
         startActivityForResult(myIntent,VUE_GALAXIE_REQUEST_CODE);
     }
 }

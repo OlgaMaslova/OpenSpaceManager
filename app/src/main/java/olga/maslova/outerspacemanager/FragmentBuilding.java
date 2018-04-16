@@ -40,7 +40,7 @@ public class FragmentBuilding extends Fragment {
         buildingImage = (ImageView)v.findViewById(R.id.BuildImage);
         buildDesc = (TextView)v.findViewById(R.id.BuildingDescription);
         btnBuild = (Button)v.findViewById(R.id.BuildBtn);
-        token = Tools.getToken((BuildingDetailActivity)getActivity());
+        token = Tools.getToken(getActivity());
         btnBuild.setOnClickListener(
                 new View.OnClickListener() {
                     public void onClick(View v) {
@@ -60,11 +60,14 @@ public class FragmentBuilding extends Fragment {
         if (currentBuilding.isBuilding()) {
             btnBuild.setEnabled(false);
             btnBuild.setAlpha((float) 0.5);
+        } else {
+            btnBuild.setEnabled(true);
+            btnBuild.setAlpha((float) 1.0);
         }
     }
 
     private void showDialog(final Integer ID) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder((BuildingDetailActivity)getActivity());
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setMessage("Do you want to build this building?");
         builder1.setCancelable(true);
 
@@ -102,16 +105,16 @@ public class FragmentBuilding extends Fragment {
             public void onResponse(Call<postResponse> call, Response<postResponse> response) {
                 if (response.code() == 200) {
                     if (response.body().getCode().equals("ok")) {
-                        Tools.showToast((BuildingDetailActivity)getActivity(), "Started building " + currentBuilding.getName() + "!");
+                        Tools.showToast(getActivity(), "Started building " + currentBuilding.getName() + "!");
                     }
                 } else {
-                    Tools.showToast((BuildingDetailActivity)getActivity(), "Error" + response.code());
+                    Tools.showToast(getActivity(), "Error" + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<postResponse> call, Throwable t) {
-                Tools.showToast((BuildingDetailActivity)getActivity(), "Network error");
+                Tools.showToast(getActivity(), "Network error");
             }
         });
 

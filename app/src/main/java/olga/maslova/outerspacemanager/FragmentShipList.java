@@ -1,15 +1,18 @@
 package olga.maslova.outerspacemanager;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
 
 import olga.maslova.outerspacemanager.Activities.ChantierActivity;
+import olga.maslova.outerspacemanager.Activities.ShipDetailActivity;
 import olga.maslova.outerspacemanager.Adapters.ShipsArrayAdapter;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getShipsResponse;
 import retrofit2.Call;
@@ -19,7 +22,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class FragmentShipList extends Fragment {
+public class FragmentShipList extends Fragment implements AdapterView.OnItemClickListener {
         private ListView shipsListView;
         private List<Ship> ships;
         private String token;
@@ -39,7 +42,7 @@ public class FragmentShipList extends Fragment {
                 shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
             }
             getChantierRequest(token);
-            shipsListView.setOnItemClickListener((ChantierActivity)getActivity());
+            shipsListView.setOnItemClickListener(this);
         }
 
     private void getChantierRequest(String token) {
@@ -56,6 +59,8 @@ public class FragmentShipList extends Fragment {
                 if (response.code() == 200) {
                     ships = response.body().getShips();
                     shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
+                    ((ChantierActivity)getActivity()).updateView(ships.get(0), true);
+
                 } else {
                     Tools.showToast((ChantierActivity)getActivity(), "Cannot get fleet for this user");
                 }
@@ -70,5 +75,11 @@ public class FragmentShipList extends Fragment {
 
     public List<Ship> getShips() {
         return ships;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ((ChantierActivity)getActivity()).updateView(ships.get(position), false);
+
     }
 }

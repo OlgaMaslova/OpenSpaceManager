@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 
-public class FragmentBuildingList extends Fragment {
+public class FragmentBuildingList extends Fragment implements AdapterView.OnItemClickListener{
     private String token;
     private List<Building> buildings;
     private ListView buildingsListView;
@@ -44,7 +45,7 @@ public class FragmentBuildingList extends Fragment {
             buildingsListView.setAdapter(new BuildingArrayAdapter(getActivity(),buildings));
         }
         getBuildingsRequest(token);
-        buildingsListView.setOnItemClickListener((BuildingActivity)getActivity());
+        buildingsListView.setOnItemClickListener(this);
     }
 
     @Override
@@ -67,6 +68,7 @@ public class FragmentBuildingList extends Fragment {
                 if (response.code() == 200) {
                     buildings = response.body().getBuildings();
                     setBuildingsNamesAndAmount();
+                    ((BuildingActivity)getActivity()).updateView(buildings.get(0), true);
                 } else {
                     Tools.showToast((BuildingActivity)getActivity(), "Cannot get information for this user");
                 }
@@ -91,6 +93,11 @@ public class FragmentBuildingList extends Fragment {
 
     public List<Building> getBuildings () {
         return buildings;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ((BuildingActivity)getActivity()).updateView(buildings.get(position), false);
     }
 
 }

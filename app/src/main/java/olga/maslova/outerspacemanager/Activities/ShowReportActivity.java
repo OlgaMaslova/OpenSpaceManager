@@ -48,12 +48,16 @@ public class ShowReportActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<getReportResponse> call, Response<getReportResponse> response) {
                 if (response.code() == 200) {
-                    gasWon.setText("Gas won: " +Integer.toString(response.body().getReports().get(0).getGasWon()));
-                    mineralsWon.setText("Minerals won: " +Integer.toString(response.body().getReports().get(0).getMineralsWon()));
-                    userAttacked.setText("User attacked: "+response.body().getReports().get(0).getTo());
-                    attackingShips = response.body().getReports().get(0).getAttackerFleet();
-                    survivedShips = response.body().getReports().get(0).getAttackerFleetAfterBattle().getFleet();
-                    configureReportView(attackingShips, survivedShips);
+                    if (response.body().getReports().size() != 0) {
+                        gasWon.setText("Gas won: " +Integer.toString(response.body().getReports().get(0).getGasWon()));
+                        mineralsWon.setText("Minerals won: " +Integer.toString(response.body().getReports().get(0).getMineralsWon()));
+                        userAttacked.setText("User attacked: "+response.body().getReports().get(0).getTo());
+                        attackingShips = response.body().getReports().get(0).getAttackerFleet();
+                        survivedShips = response.body().getReports().get(0).getAttackerFleetAfterBattle().getFleet();
+                        configureReportView(attackingShips, survivedShips);
+                    } else {
+                        Tools.showToast(getApplicationContext(), "You don't have reports yet!");
+                    }
 
                 } else {
                     Tools.showToast(getApplicationContext(), "Cannot get last report");

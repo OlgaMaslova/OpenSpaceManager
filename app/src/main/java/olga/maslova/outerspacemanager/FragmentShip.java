@@ -1,5 +1,6 @@
 package olga.maslova.outerspacemanager;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.provider.ContactsContract;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import java.util.HashMap;
 
 import olga.maslova.outerspacemanager.Activities.BuildingDetailActivity;
+import olga.maslova.outerspacemanager.Activities.ChantierActivity;
 import olga.maslova.outerspacemanager.Activities.ShipDetailActivity;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
 import retrofit2.Call;
@@ -31,11 +33,12 @@ public class FragmentShip extends Fragment {
     private Ship currentShip;
     private Button btnBuild;
     private String token;
+    private Context context;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup  container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_ship,container);
-        token = Tools.getToken((ShipDetailActivity)getActivity());
+        token = Tools.getToken(getActivity());
         shipName = (TextView)v.findViewById(R.id.ShipTitle);
         shipImage = (ImageView)v.findViewById(R.id.shipImage);
         shipDesc = (TextView)v.findViewById(R.id.ShipDescription);
@@ -60,13 +63,19 @@ public class FragmentShip extends Fragment {
         if (ship.getShipId() == 1) {
             shipImage.setImageResource(R.drawable.chasseur_lourd);
         }
+        if (ship.getShipId() == 2) {
+            shipImage.setImageResource(R.drawable.spyship);
+        }
+        if (ship.getShipId() == 3) {
+            shipImage.setImageResource(R.drawable.destroyer);
+        }
         if (ship.getShipId() == 4) {
             shipImage.setImageResource(R.drawable.death_star);
         }
     }
 
     private void showDialog(final Integer ID) {
-        AlertDialog.Builder builder1 = new AlertDialog.Builder((ShipDetailActivity)getActivity());
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
         builder1.setMessage("Do you want to build this ship?");
         builder1.setCancelable(true);
 
@@ -106,16 +115,16 @@ public class FragmentShip extends Fragment {
             public void onResponse(Call<postResponse> call, Response<postResponse> response) {
                 if (response.code() == 200) {
                     if (response.body().getCode().equals("ok")) {
-                        Tools.showToast((ShipDetailActivity)getActivity(), "Ship " + currentShip.getName() + " is built!");
+                        Tools.showToast(getActivity(), "Ship " + currentShip.getName() + " is built!");
                     }
                 } else {
-                    Tools.showToast((ShipDetailActivity)getActivity(), "Error" + response.code());
+                    Tools.showToast(getActivity(), "Error" + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<postResponse> call, Throwable t) {
-                Tools.showToast((ShipDetailActivity)getActivity(), "Network error");
+                Tools.showToast(getActivity(), "Network error");
             }
         });
 
