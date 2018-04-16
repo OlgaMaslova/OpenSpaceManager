@@ -31,12 +31,28 @@ public class ShipsArrayAdapter extends ArrayAdapter {
         View rowView = inflater.inflate(R.layout.row_ship, parent, false);
         TextView shipName = (TextView) rowView.findViewById(R.id.shipName);
         TextView shipAmount = (TextView) rowView.findViewById(R.id.amountShip);
+        ImageView shipImage = (ImageView) rowView.findViewById(R.id.shipIcon);
         Ship currentShip = values.get(position);
         shipName.setText(currentShip.getName());
         if(currentShip.getAmount() != null) {
             shipAmount.setText(currentShip.getAmount().toString());
         } else {
             shipAmount.setText("");
+        }
+        if (currentShip.getShipId() == 0) {
+            shipImage.setImageResource(R.drawable.chasseur_leger);
+        }
+        if (currentShip.getShipId() == 1) {
+            shipImage.setImageResource(R.drawable.chasseur_lourd);
+        }
+        if (currentShip.getShipId() == 2) {
+            shipImage.setImageResource(R.drawable.spyship);
+        }
+        if (currentShip.getShipId() == 3) {
+            shipImage.setImageResource(R.drawable.destroyer);
+        }
+        if (currentShip.getShipId() == 4) {
+            shipImage.setImageResource(R.drawable.death_star);
         }
         return rowView;
     }

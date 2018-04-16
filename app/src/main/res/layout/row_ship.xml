@@ -1,29 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="90dp"
-    android:orientation="vertical"
+    android:layout_height="100dp"
+    android:orientation="horizontal"
     android:background="@drawable/bluespace">
-    <TextView
-        android:id="@+id/shipName"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_marginTop="7dp"
-        android:layout_gravity="center_horizontal"
-        android:maxLines="1"
-        android:text="title"
-        android:textColor="@android:color/white"
-        android:textSize="26dip"
-        android:textStyle="bold" />
-    <TextView
-        android:id="@+id/amountShip"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:maxLines="1"
-        android:text="amount"
-        android:layout_gravity="center_horizontal"
-        android:textColor="@android:color/white"
-        android:textSize="26dip"
-        android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/shipIcon"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:transitionName="@string/ship_image_fragment_transition"
+            android:padding="3dp" />
+
+        <TextView
+            android:id="@+id/shipName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="10dp"
+            android:maxLines="1"
+            android:text="title"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="22dip"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/amountShip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="7dp"
+            android:maxLines="1"
+            android:text="amount"
+            android:layout_gravity="center_vertical"
+            android:textColor="@android:color/white"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
 
 </LinearLayout>

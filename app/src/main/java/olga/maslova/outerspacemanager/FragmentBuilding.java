@@ -1,17 +1,24 @@
 package olga.maslova.outerspacemanager;
 
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import olga.maslova.outerspacemanager.Activities.BuildingDetailActivity;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
@@ -48,15 +55,33 @@ public class FragmentBuilding extends Fragment {
                     }
                 }
         );
+        //postponeEnterTransition();
+        getActivity().supportPostponeEnterTransition();
         return v;
     }
+
     public void updateView(Building building) {
         currentBuilding = building;
         buildingName.setText(building.getName());
         buildDesc.setText("Effect : " + building.getEffect() + "\n"+ "Gas Cost: " +currentBuilding.getGasCostByLevel() + "\n"+ "Mineral Cost: " +currentBuilding.getMineralCostByLevel() + "\n" +
                 "Time to build in seconds: " + (currentBuilding.getTimeToBuildByLevel()*currentBuilding.getLevel()+currentBuilding.getTimeToBuildLevel0()) + "\n" + "Amount of Effect by level: " + currentBuilding.getAmountOfEffectByLevel());
         String imageURL = building.getImageUrl();
-        Glide.with(this).load(imageURL).into(buildingImage);
+        Glide.with(this)
+                .load(imageURL)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        //scheduleStartPostponedTransition(buildingImage);
+                        getActivity().supportStartPostponedEnterTransition();
+                        return false;
+                    }
+                })
+                .into(buildingImage);
         if (currentBuilding.isBuilding()) {
             btnBuild.setEnabled(false);
             btnBuild.setAlpha((float) 0.5);
@@ -64,6 +89,7 @@ public class FragmentBuilding extends Fragment {
             btnBuild.setEnabled(true);
             btnBuild.setAlpha((float) 1.0);
         }
+
     }
 
     private void showDialog(final Integer ID) {
@@ -118,6 +144,18 @@ public class FragmentBuilding extends Fragment {
             }
         });
 
+    }
+
+    private void scheduleStartPostponedTransition(final View sharedElement) {
+        sharedElement.getViewTreeObserver().addOnPreDrawListener(
+                new ViewTreeObserver.OnPreDrawListener() {
+                    @Override
+                    public boolean onPreDraw() {
+                        sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
+                        startPostponedEnterTransition();
+                        return true;
+                    }
+                });
     }
 
 }

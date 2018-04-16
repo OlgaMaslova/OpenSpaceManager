@@ -17,4 +17,7 @@ public class BuildingDetailActivity extends AppCompatActivity {
         FragmentBuilding fragmentBuilding = (FragmentBuilding)getSupportFragmentManager().findFragmentById(R.id.fragmentBuilding_ID);
         fragmentBuilding.updateView(building);
     }
+
+
+
 }

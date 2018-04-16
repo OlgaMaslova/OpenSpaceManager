@@ -22,8 +22,8 @@ public class getReportResponse {
         private String from;
         private String to;
         private String type;
-        private int gasWon;
-        private int mineralsWon;
+        private double gasWon;
+        private double mineralsWon;
 
         public List<Ship> getAttackerFleet() {
             return attackerFleet;
@@ -97,7 +97,7 @@ public class getReportResponse {
             this.type = type;
         }
 
-        public int getGasWon() {
+        public double getGasWon() {
             return gasWon;
         }
 
@@ -105,7 +105,7 @@ public class getReportResponse {
             this.gasWon = gasWon;
         }
 
-        public int getMineralsWon() {
+        public double getMineralsWon() {
             return mineralsWon;
         }
 

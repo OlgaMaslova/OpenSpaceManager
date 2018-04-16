@@ -43,14 +43,14 @@ public class ShowReportActivity extends AppCompatActivity {
                 .build();
 
         OuterSpaceManagerService service = retrofit.create(OuterSpaceManagerService.class);
-        final Call<getReportResponse> request = service.getReport(0,1, token);
+        final Call<getReportResponse> request = service.getReport(0,3, token);
         request.enqueue(new Callback<getReportResponse>() {
             @Override
             public void onResponse(Call<getReportResponse> call, Response<getReportResponse> response) {
                 if (response.code() == 200) {
                     if (response.body().getReports().size() != 0) {
-                        gasWon.setText("Gas won: " +Integer.toString(response.body().getReports().get(0).getGasWon()));
-                        mineralsWon.setText("Minerals won: " +Integer.toString(response.body().getReports().get(0).getMineralsWon()));
+                        gasWon.setText("Gas won: " + String.format("%.2f", response.body().getReports().get(0).getGasWon()));
+                        mineralsWon.setText("Minerals won: " +String.format("%.2f",response.body().getReports().get(0).getMineralsWon()));
                         userAttacked.setText("User attacked: "+response.body().getReports().get(0).getTo());
                         attackingShips = response.body().getReports().get(0).getAttackerFleet();
                         survivedShips = response.body().getReports().get(0).getAttackerFleetAfterBattle().getFleet();

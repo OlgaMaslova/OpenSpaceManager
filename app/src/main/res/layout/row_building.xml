@@ -45,6 +45,7 @@
             android:layout_margin="5dp"
             android:layout_gravity="center_horizontal"
             android:background="#444"
+            android:transitionName="@string/building_image_fragment_transition"
             android:padding="3dp" />
 
     </LinearLayout>

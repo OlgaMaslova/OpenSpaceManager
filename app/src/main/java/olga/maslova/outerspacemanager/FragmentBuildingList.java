@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -28,12 +29,13 @@ public class FragmentBuildingList extends Fragment implements AdapterView.OnItem
     private List<String> buildingsNames = new ArrayList<String>();
     private List<Integer> buildingsAmount = new ArrayList<Integer>();
     private Building chosenBuilding;
+    private Boolean firstLaunch = true;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_a,container);
-        buildingsListView = (ListView)v.findViewById(R.id.shipsListView);
+        View v = inflater.inflate(R.layout.fragment_building_list,container);
+        buildingsListView = (ListView)v.findViewById(R.id.buildingsListView);
         return v;
     }
 
@@ -51,7 +53,7 @@ public class FragmentBuildingList extends Fragment implements AdapterView.OnItem
     @Override
     public void onResume() {
         super.onResume();
-        getBuildingsRequest(token);
+      //  getBuildingsRequest(token);
     }
 
     private void getBuildingsRequest(String token) {
@@ -68,7 +70,10 @@ public class FragmentBuildingList extends Fragment implements AdapterView.OnItem
                 if (response.code() == 200) {
                     buildings = response.body().getBuildings();
                     setBuildingsNamesAndAmount();
-                    ((BuildingActivity)getActivity()).updateView(buildings.get(0), true);
+                    if (firstLaunch) {
+                        ((BuildingActivity)getActivity()).updateView(buildings.get(0), true, null);
+                        firstLaunch = false;
+                    }
                 } else {
                     Tools.showToast((BuildingActivity)getActivity(), "Cannot get information for this user");
                 }
@@ -97,7 +102,7 @@ public class FragmentBuildingList extends Fragment implements AdapterView.OnItem
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        ((BuildingActivity)getActivity()).updateView(buildings.get(position), false);
+        ((BuildingActivity)getActivity()).updateView(buildings.get(position), false, (ImageView)view.findViewById(R.id.image));
     }
 
 }

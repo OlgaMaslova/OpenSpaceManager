@@ -1,10 +1,14 @@
 package olga.maslova.outerspacemanager.Activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 
 import java.util.List;
 
@@ -23,35 +27,22 @@ public class BuildingActivity extends AppCompatActivity {
     }
 
 
-    public void updateView(Building building, Boolean fragBuildingShown) {
+    public void updateView(Building building, Boolean fragBuildingShown, ImageView imageView) {
         FragmentBuildingList fragBuildingList = (FragmentBuildingList) getSupportFragmentManager().findFragmentById(R.id.fragmentBuildingList_ID);
         FragmentBuilding fragBuilding = (FragmentBuilding)getSupportFragmentManager().findFragmentById(R.id.fragmentBuilding_ID);
-        if((fragBuilding == null|| !fragBuilding.isInLayout()) && !fragBuildingShown){
+        if((fragBuilding == null || !fragBuilding.isInLayout()) && !fragBuildingShown){
             buildings =  fragBuildingList.getBuildings();
+
+            ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
+                    this,
+                    imageView,
+                    "building_icon");
             Intent i = new Intent(getApplicationContext(),BuildingDetailActivity.class);
             i.putExtra("chosenBuilding", building);
-            startActivity(i);
-        } else if (fragBuilding != null  && fragBuilding.isInLayout()) {
+            startActivity(i, options.toBundle());
+        } else if (fragBuilding != null && fragBuilding.isInLayout()) {
             buildings =  fragBuildingList.getBuildings();
             fragBuilding.updateView(building);
         }
     }
-/*
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-        FragmentBuildingList fragBuildingList = (FragmentBuildingList) getSupportFragmentManager().findFragmentById(R.id.fragmentBuildingList_ID);
-        FragmentBuilding fragBuilding = (FragmentBuilding)getSupportFragmentManager().findFragmentById(R.id.fragmentBuilding_ID);
-        if(fragBuilding == null|| !fragBuilding.isInLayout()){
-            buildings =  fragBuildingList.getBuildings();
-            Intent i = new Intent(getApplicationContext(),BuildingDetailActivity.class);
-            i.putExtra("chosenBuilding", buildings.get(position));
-            startActivity(i);
-        } else {
-            buildings =  fragBuildingList.getBuildings();
-            fragBuilding.updateView(buildings.get(position));
-        }
-
-    }
-*/
 }

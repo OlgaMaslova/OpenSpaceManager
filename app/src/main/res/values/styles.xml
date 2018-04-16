@@ -13,15 +13,5 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="AppTheme.BuildingActivity">
-        <item name="android:windowExitTransition">@transition/main_exit</item>
-        <item name="android:windowReenterTransition">@transition/main_reenter</item>
-    </style>
-
-    <style name="AppTheme.BuildingDetail">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowAllowEnterTransitionOverlap">true</item>
-        <item name="android:windowEnterTransition">@transition/detail_enter</item>
-    </style>
 
 </resources>
