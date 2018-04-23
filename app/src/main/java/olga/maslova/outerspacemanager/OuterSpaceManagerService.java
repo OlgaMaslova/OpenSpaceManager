@@ -12,6 +12,7 @@ import olga.maslova.outerspacemanager.ResponseRetroFit.getBuildingsResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getFleetResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getGalaxieResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getReportResponse;
+import olga.maslova.outerspacemanager.ResponseRetroFit.getResearchResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getShipsResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getUserResponse;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
@@ -44,6 +45,9 @@ public interface OuterSpaceManagerService {
 
     @GET("fleet/list")
     Call<getFleetResponse> getFleet(@Header("x-access-token") String token);
+
+    @GET("searches/list")
+    Call<getResearchResponse> getResearch(@Header("x-access-token") String token);
 
     @GET("users/{from}/{limit}")
     Call<getGalaxieResponse> getGalaxie(@Path("from") Integer from, @Path("limit") Integer limit, @Header("x-access-token") String token);

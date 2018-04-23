@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
+import olga.maslova.outerspacemanager.OnSelectedShipListener;
 import olga.maslova.outerspacemanager.OuterSpaceManagerService;
 import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getFleetResponse;
@@ -22,20 +27,26 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class FleetActivity extends AppCompatActivity {
+public class FleetActivity extends AppCompatActivity implements OnSelectedShipListener {
 
     private String token;
     private List<Ship> ships;
     private int size;
+    private TextView chosenFleet;
+    private List<Ship> shipsForAttack  = new ArrayList<>();
     private ListView fleetListView;
     private Button attackBtn;
     private ArrayList<Ship> arrayShips;
     private Button reportBtn;
+    private List<Integer> nmbShips = new ArrayList<>();
+    private Integer progressValue;
+    private HashMap<String, Integer> attackingFleet = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);setContentView(R.layout.activity_fleet);
         fleetListView = (ListView) findViewById(R.id.FleetListView);
+        chosenFleet = (TextView) findViewById(R.id.chosen_fleet_textView);
         token = Tools.getToken(getApplicationContext());
         getFleetRequest(token);
         reportBtn = (Button) findViewById(R.id.getReportBtn);
@@ -68,7 +79,7 @@ public class FleetActivity extends AppCompatActivity {
                     } else {
                         ships = response.body().getShips();
                         arrayShips = new ArrayList<Ship>(ships);
-                        fleetListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships));
+                        fleetListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships, FleetActivity.this));
                         attackBtn = (Button) findViewById(R.id.attackbtn);
                         attackBtn.setOnClickListener(
                                 new View.OnClickListener() {
@@ -99,5 +110,23 @@ public class FleetActivity extends AppCompatActivity {
     private void showReportActivity(){
         Intent myIntent = new Intent(getApplicationContext(),ShowReportActivity.class);
         startActivityForResult(myIntent, 1);
+    }
+
+    @Override
+    public void onSelected(Ship ship, int progress) {
+        progressValue = progress;
+
+        if (!attackingFleet.containsKey(ship.getName())) {
+            attackingFleet.put(ship.getName(), progress);
+        }
+        //updateAttackText(text);
+        for (String chosenShip:attackingFleet.keySet()) {
+            chosenFleet.setText("Attack with " + attackingFleet.get(chosenShip) + " " + chosenShip);
+
+        }
+    }
+
+    private void updateAttackText(String text){
+
     }
 }

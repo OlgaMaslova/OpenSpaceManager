@@ -39,7 +39,7 @@ public class FragmentShipList extends Fragment implements AdapterView.OnItemClic
             super.onActivityCreated(savedInstanceState);
             token = Tools.getToken((ChantierActivity)getActivity());
             if (ships != null && ships.size() > 0) {
-                shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
+                shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships, null));
             }
             getChantierRequest(token);
             shipsListView.setOnItemClickListener(this);
@@ -58,7 +58,7 @@ public class FragmentShipList extends Fragment implements AdapterView.OnItemClic
             public void onResponse(Call<getShipsResponse> call, Response<getShipsResponse> response) {
                 if (response.code() == 200) {
                     ships = response.body().getShips();
-                    shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships));
+                    shipsListView.setAdapter(new ShipsArrayAdapter(getActivity(), ships, null));
                     ((ChantierActivity)getActivity()).updateView(ships.get(0), true);
 
                 } else {
