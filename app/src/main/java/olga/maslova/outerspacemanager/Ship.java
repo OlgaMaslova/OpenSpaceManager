@@ -20,6 +20,7 @@ public class Ship implements Serializable {
     private Integer spatioportLevelNeeded;
     private Integer speed;
     private Integer timeToBuild;
+    private Integer progress = 0; //for SeekBar
 
     public String getName() {
         return name;
@@ -82,5 +83,13 @@ public class Ship implements Serializable {
             case 4:
                 this.name = "Etoile de la mort";
         }
+    }
+
+    public Integer getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Integer progress) {
+        this.progress = progress;
     }
 }

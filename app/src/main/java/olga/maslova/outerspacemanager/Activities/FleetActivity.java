@@ -115,14 +115,24 @@ public class FleetActivity extends AppCompatActivity implements OnSelectedShipLi
     @Override
     public void onSelected(Ship ship, int progress) {
         progressValue = progress;
+        chosenFleet.setText("Attack with ");
+        if (attackingFleet.containsKey(ship.getName())){
+            attackingFleet.remove(ship.getName());
+        }
 
-        if (!attackingFleet.containsKey(ship.getName())) {
+        if (!attackingFleet.containsKey(ship.getName()) && progress != 0) {
             attackingFleet.put(ship.getName(), progress);
         }
+
+
         //updateAttackText(text);
         for (String chosenShip:attackingFleet.keySet()) {
-            chosenFleet.setText("Attack with " + attackingFleet.get(chosenShip) + " " + chosenShip);
-
+            String previousText = (String) chosenFleet.getText();
+            if (previousText != "Attack with ") {
+                chosenFleet.setText(previousText + ", " + attackingFleet.get(chosenShip) + " " + chosenShip);
+            } else {
+                chosenFleet.setText(previousText + attackingFleet.get(chosenShip) + " " + chosenShip);
+            }
         }
     }
 

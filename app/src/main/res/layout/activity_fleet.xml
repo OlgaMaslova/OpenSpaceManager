@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:text="Your Fleet for Attack"
             android:textColor="@android:color/background_light"
-            android:textSize="24sp"
+            android:textSize="20sp"
             android:layout_gravity="center_horizontal"/>
 
         <Button

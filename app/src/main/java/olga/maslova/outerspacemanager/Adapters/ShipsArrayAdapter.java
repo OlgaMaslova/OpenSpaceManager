@@ -37,12 +37,13 @@ public class ShipsArrayAdapter extends ArrayAdapter {
         TextView shipName = (TextView) rowView.findViewById(R.id.shipName);
         TextView shipAmount = (TextView) rowView.findViewById(R.id.amountShip);
         ImageView shipImage = (ImageView) rowView.findViewById(R.id.shipIcon);
-        SeekBar mSeekBar = (SeekBar) rowView.findViewById(R.id.seek_bar_amount_ships);
+        final SeekBar mSeekBar = (SeekBar) rowView.findViewById(R.id.seek_bar_amount_ships);
 
         final Ship currentShip = values.get(position);
         shipName.setText(currentShip.getName());
         if(currentShip.getAmount() != null) {
-            mSeekBar.setMax(currentShip.getAmount());
+            mSeekBar.setMax(100);
+            mSeekBar.setProgress(currentShip.getProgress()*(mSeekBar.getMax())/currentShip.getAmount());
             shipAmount.setText(currentShip.getAmount().toString());
         } else {
             mSeekBar.setVisibility(View.INVISIBLE);
@@ -64,10 +65,12 @@ public class ShipsArrayAdapter extends ArrayAdapter {
             shipImage.setImageResource(R.drawable.death_star);
         }
         if (this.listener != null) {
+            final int[] mProgress = {0};
             mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    listener.onSelected(currentShip, progress);
+                    double nmber = Math.ceil(progress*currentShip.getAmount()/(mSeekBar.getMax()));
+                    mProgress[0] = (int) Math.ceil(((double) (progress*currentShip.getAmount()))/(double) (mSeekBar.getMax()));
                 }
 
                 @Override
@@ -77,7 +80,9 @@ public class ShipsArrayAdapter extends ArrayAdapter {
 
                 @Override
                 public void onStopTrackingTouch(SeekBar seekBar) {
-
+                    currentShip.setProgress(mProgress[0]);
+                    mSeekBar.setProgress(mProgress[0]*(mSeekBar.getMax())/currentShip.getAmount());
+                    listener.onSelected(currentShip, mProgress[0]);
                 }
             });
         }
