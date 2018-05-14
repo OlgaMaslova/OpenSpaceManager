@@ -1,20 +1,16 @@
 package olga.maslova.outerspacemanager.Activities;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 
 import java.util.List;
 
 import olga.maslova.outerspacemanager.Building;
-import olga.maslova.outerspacemanager.FragmentBuilding;
-import olga.maslova.outerspacemanager.FragmentBuildingList;
+import olga.maslova.outerspacemanager.Fragments.FragmentBuilding;
+import olga.maslova.outerspacemanager.Fragments.FragmentBuildingList;
 import olga.maslova.outerspacemanager.R;
 
 public class BuildingActivity extends AppCompatActivity {

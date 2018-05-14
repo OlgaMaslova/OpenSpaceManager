@@ -15,7 +15,7 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="olga.maslova.outerspacemanager.FragmentBuilding"
+            android:name="olga.maslova.outerspacemanager.Fragments.FragmentBuilding"
             android:id="@+id/fragmentBuilding_ID"
             android:layout_gravity="right" />
     </LinearLayout>

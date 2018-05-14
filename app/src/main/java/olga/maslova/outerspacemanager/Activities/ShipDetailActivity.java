@@ -3,7 +3,7 @@ package olga.maslova.outerspacemanager.Activities;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import olga.maslova.outerspacemanager.FragmentShip;
+import olga.maslova.outerspacemanager.Fragments.FragmentShip;
 import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.Ship;
 

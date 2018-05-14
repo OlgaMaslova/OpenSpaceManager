@@ -1,4 +1,4 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Fragments;
 
 import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
@@ -21,7 +21,11 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import olga.maslova.outerspacemanager.Activities.BuildingDetailActivity;
+import olga.maslova.outerspacemanager.Building;
+import olga.maslova.outerspacemanager.OuterSpaceManagerService;
+import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
+import olga.maslova.outerspacemanager.Tools;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -64,7 +68,8 @@ public class FragmentBuilding extends Fragment {
         currentBuilding = building;
         buildingName.setText(building.getName());
         buildDesc.setText("Effect : " + building.getEffect() + "\n"+ "Gas Cost: " +currentBuilding.getGasCostByLevel() + "\n"+ "Mineral Cost: " +currentBuilding.getMineralCostByLevel() + "\n" +
-                "Time to build in seconds: " + (currentBuilding.getTimeToBuildByLevel()*currentBuilding.getLevel()+currentBuilding.getTimeToBuildLevel0()) + "\n" + "Amount of Effect by level: " + currentBuilding.getAmountOfEffectByLevel());
+                "Time to build in seconds: " + (currentBuilding.getTimeToBuildByLevel()*currentBuilding.getLevel()+currentBuilding.getTimeToBuildLevel0()) +
+                "\n" + "Amount of Effect by level: " + currentBuilding.getAmountOfEffectByLevel());
         String imageURL = building.getImageUrl();
         Glide.with(this)
                 .load(imageURL)

@@ -122,4 +122,5 @@ public class Research {
     public void setTimeToBuildLevel0(Integer timeToBuildLevel0) {
         this.timeToBuildLevel0 = timeToBuildLevel0;
     }
+
 }

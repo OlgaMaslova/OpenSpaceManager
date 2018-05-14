@@ -1,4 +1,4 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Fragments;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -15,10 +15,11 @@ import android.widget.TextView;
 
 import java.util.HashMap;
 
-import olga.maslova.outerspacemanager.Activities.BuildingDetailActivity;
-import olga.maslova.outerspacemanager.Activities.ChantierActivity;
-import olga.maslova.outerspacemanager.Activities.ShipDetailActivity;
+import olga.maslova.outerspacemanager.OuterSpaceManagerService;
+import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
+import olga.maslova.outerspacemanager.Ship;
+import olga.maslova.outerspacemanager.Tools;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

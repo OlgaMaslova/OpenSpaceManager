@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import olga.maslova.outerspacemanager.Building;
-import olga.maslova.outerspacemanager.FragmentBuilding;
+import olga.maslova.outerspacemanager.Fragments.FragmentBuilding;
 import olga.maslova.outerspacemanager.R;
 
 public class BuildingDetailActivity extends AppCompatActivity {

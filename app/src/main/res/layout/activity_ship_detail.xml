@@ -15,7 +15,7 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="olga.maslova.outerspacemanager.FragmentShip"
+            android:name="olga.maslova.outerspacemanager.Fragments.FragmentShip"
             android:id="@+id/fragmentShip_ID"
             android:layout_gravity="right" />
     </LinearLayout>

@@ -1,16 +1,11 @@
 package olga.maslova.outerspacemanager.Activities;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
 
-import java.util.List;
-
-import olga.maslova.outerspacemanager.FragmentShipList;
-import olga.maslova.outerspacemanager.FragmentShip;
+import olga.maslova.outerspacemanager.Fragments.FragmentShipList;
+import olga.maslova.outerspacemanager.Fragments.FragmentShip;
 import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.Ship;
 

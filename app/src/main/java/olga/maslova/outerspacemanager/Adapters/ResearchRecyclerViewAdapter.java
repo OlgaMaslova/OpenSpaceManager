@@ -4,17 +4,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
+import olga.maslova.outerspacemanager.OnSelectedIdListener;
 import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.Research;
 
 
 public class ResearchRecyclerViewAdapter extends RecyclerView.Adapter<ResearchRecyclerViewAdapter.ViewHolder> {
     private List<Research> mResearches;
+    private OnSelectedIdListener mListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         // each data item is just a string in this case
@@ -26,8 +29,9 @@ public class ResearchRecyclerViewAdapter extends RecyclerView.Adapter<ResearchRe
     }
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public ResearchRecyclerViewAdapter(List<Research> myDataset) {
+    public ResearchRecyclerViewAdapter(List<Research> myDataset, OnSelectedIdListener listener) {
         mResearches = myDataset;
+        mListener = listener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -48,7 +52,27 @@ public class ResearchRecyclerViewAdapter extends RecyclerView.Adapter<ResearchRe
         TextView researchName = (TextView) holder.mView.findViewById(R.id.research_title);
         TextView description = (TextView) holder.mView.findViewById(R.id.research_desc);
         ImageView researchImage = (ImageView) holder.mView.findViewById(R.id.image_research);
-        researchName.setText(mResearches.get(position).getName());
+        Button btnStartResearch = (Button) holder.mView.findViewById(R.id.start_research_btn);
+
+        final Research currentResearch = mResearches.get(position);
+
+        btnStartResearch.setOnClickListener(
+                new View.OnClickListener() {
+                    public void onClick(View v) {
+                        mListener.onSelected(currentResearch.getSearchId());
+                    }
+                }
+        );
+        researchName.setText(currentResearch.getName());
+        if (position == 0) {
+            researchImage.setImageResource(R.drawable.robot);
+        } else {
+            researchImage.setImageResource(R.drawable.research_motor);
+        }
+        description.setText("Level: " + currentResearch.getLevel() + "\n" + "Effect : " + currentResearch.getEffect() + "\n"+
+                "Gas Cost: " + currentResearch.getGasCostByLevel() + "\n"+ "Mineral Cost: " + currentResearch.getMineralCostByLevel() + "\n" +
+                "Time to build in seconds: " + (currentResearch.getTimeToBuildByLevel()*currentResearch.getLevel()+currentResearch.getTimeToBuildLevel0()) +
+                "\n" + "Amount of Effect by level: " + currentResearch.getAmountOfEffectByLevel());
     }
 
     // Return the size of your dataset (invoked by the layout manager)

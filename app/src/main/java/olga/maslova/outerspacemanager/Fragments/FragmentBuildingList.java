@@ -1,4 +1,4 @@
-package olga.maslova.outerspacemanager;
+package olga.maslova.outerspacemanager.Fragments;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -14,7 +14,11 @@ import java.util.List;
 
 import olga.maslova.outerspacemanager.Activities.BuildingActivity;
 import olga.maslova.outerspacemanager.Adapters.BuildingArrayAdapter;
+import olga.maslova.outerspacemanager.Building;
+import olga.maslova.outerspacemanager.OuterSpaceManagerService;
+import olga.maslova.outerspacemanager.R;
 import olga.maslova.outerspacemanager.ResponseRetroFit.getBuildingsResponse;
+import olga.maslova.outerspacemanager.Tools;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

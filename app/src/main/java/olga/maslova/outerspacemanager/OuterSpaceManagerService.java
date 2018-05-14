@@ -64,5 +64,7 @@ public interface OuterSpaceManagerService {
     @POST("fleet/attack/{userName}")
     Call<postResponse> postAttack(@Path("userName") String userName, @Body JsonObject object, @Header("x-access-token") String token);
 
+    @POST("searches/create/{searchId}")
+    Call<postResponse> createResearch(@Path("searchId") Integer searchID, @Header("x-access-token") String token);
 
 }

@@ -51,7 +51,7 @@ public class ShowReportActivity extends AppCompatActivity {
                     if (response.body().getReports().size() != 0) {
                         gasWon.setText("Gas won: " + String.format("%.2f", response.body().getReports().get(0).getGasWon()));
                         mineralsWon.setText("Minerals won: " +String.format("%.2f",response.body().getReports().get(0).getMineralsWon()));
-                        userAttacked.setText("User attacked: "+response.body().getReports().get(0).getTo());
+                        userAttacked.setText("Attacker: " + response.body().getReports().get(0).getFrom() + "\n" + "User attacked: "+response.body().getReports().get(0).getTo());
                         attackingShips = response.body().getReports().get(0).getAttackerFleet();
                         survivedShips = response.body().getReports().get(0).getAttackerFleetAfterBattle().getFleet();
                         configureReportView(attackingShips, survivedShips);
@@ -72,14 +72,15 @@ public class ShowReportActivity extends AppCompatActivity {
     }
 
     void configureReportView(List<Ship> attackingShips,List<Ship> survivedShips) {
-        String textForAttackingShips = "You sent: ";
+        String textForAttackingShips = "Attacker sent: ";
         for (Ship ship:attackingShips) {
             textForAttackingShips += Integer.toString(ship.getAmount()) + " ";
             ship.setShipName(ship.getShipId());
             textForAttackingShips += ship.getName();
+            textForAttackingShips += " ";
         }
         attackingShipsTextView.setText(textForAttackingShips);
-        String textForSurvivedShips = "Fleet after battle: ";
+        String textForSurvivedShips = "Attacker's fleet after battle: ";
         for (Ship survivedShip: survivedShips) {
             textForSurvivedShips += Integer.toString(survivedShip.getAmount()) + " ";
             textForSurvivedShips += survivedShip.getName() + "\n";
