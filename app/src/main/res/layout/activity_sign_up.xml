@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bluespace"
-    tools:context="olga.maslova.outerspacemanager.Activities.SignUpActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.SignUpActivity">
 
     <EditText
         android:id="@+id/nameTextField"

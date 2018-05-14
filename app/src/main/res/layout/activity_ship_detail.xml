@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.Activities.ShipDetailActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.ShipDetailActivity">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,7 +15,7 @@
         <fragment
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:name="olga.maslova.outerspacemanager.Fragments.FragmentShip"
+            android:name="olga.maslova.outerspacemanager.fragments.FragmentShip"
             android:id="@+id/fragmentShip_ID"
             android:layout_gravity="right" />
     </LinearLayout>

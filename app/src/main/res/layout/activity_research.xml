@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bluespace"
-    tools:context="olga.maslova.outerspacemanager.Activities.ResearchActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.ResearchActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_research"

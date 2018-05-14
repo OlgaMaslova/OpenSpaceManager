@@ -74,14 +74,19 @@ public class Ship implements Serializable {
         switch (shipId) {
             case 0:
                 this.name = "Chasseur léger";
+                break;
             case 1:
-                this.name = "Chassuer lourd";
+                this.name = "Chasseur lourd";
+                break;
             case 2:
                 this.name = "Sonde d'espionnage";
+                break;
             case 3:
                 this.name = "Destroyer";
+                break;
             case 4:
                 this.name = "Etoile de la mort";
+                break;
         }
     }
 

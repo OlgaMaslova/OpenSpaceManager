@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bluespace"
     android:orientation="vertical"
-    tools:context="olga.maslova.outerspacemanager.Activities.ShowReportActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.ShowReportActivity">
 
     <TextView
         android:id="@+id/RaportTitle"

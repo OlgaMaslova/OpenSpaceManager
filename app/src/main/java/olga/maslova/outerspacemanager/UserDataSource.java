@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.UUID;
 
-import olga.maslova.outerspacemanager.ResponseRetroFit.getUserResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getUserResponse;
 
 /**
  * Created by omaslova on 23/01/2018.

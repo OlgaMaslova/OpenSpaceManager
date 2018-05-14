@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.Activities.FleetActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.FleetActivity">
 
     <TextView
         android:id="@+id/FleetTitle"
@@ -41,7 +41,7 @@
             android:id="@+id/chosen_fleet_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Fleet for Attack"
+            android:text="Choose fleet for attack"
             android:textColor="@android:color/background_light"
             android:textSize="20sp"
             android:layout_gravity="center_horizontal"/>
@@ -56,17 +56,6 @@
             android:textSize="24sp"
             android:layout_gravity="center_horizontal"
             app:layout_constraintTop_toBottomOf="@+id/FleetListView"/>
-        <Button
-            android:id="@+id/getReportBtn"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@drawable/button_border"
-            android:text="Show last report"
-            android:textColor="@android:color/background_light"
-            android:textSize="24sp"
-            android:layout_marginTop="10dp"
-            android:layout_gravity="center_horizontal"
-            />
 
     </LinearLayout>
 

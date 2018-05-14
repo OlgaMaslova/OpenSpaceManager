@@ -2,20 +2,17 @@ package olga.maslova.outerspacemanager;
 
 import com.google.gson.JsonObject;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import java.util.HashMap;
 
-import olga.maslova.outerspacemanager.ResponseRetroFit.authResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getBuildingsResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getFleetResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getGalaxieResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getReportResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getResearchResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getShipsResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.getUserResponse;
-import olga.maslova.outerspacemanager.ResponseRetroFit.postResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.authResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getBuildingsResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getFleetResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getGalaxieResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getReportResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getResearchResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getShipsResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.getUserResponse;
+import olga.maslova.outerspacemanager.responsesRetroFit.postResponse;
 import retrofit2.*;
 import retrofit2.http.Body;
 import retrofit2.http.GET;

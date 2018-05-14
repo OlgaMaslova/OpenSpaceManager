@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bluespace"
     android:orientation="vertical"
-    tools:context="olga.maslova.outerspacemanager.Activities.MainActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"

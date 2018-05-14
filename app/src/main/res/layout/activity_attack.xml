@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.Activities.AttackActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.AttackActivity">
 
     <TextView
         android:id="@+id/whomText"

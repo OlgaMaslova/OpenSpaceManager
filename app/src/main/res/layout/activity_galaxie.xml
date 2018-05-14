@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/background_dark"
-    tools:context="olga.maslova.outerspacemanager.Activities.GalaxieActivity">
+    tools:context="olga.maslova.outerspacemanager.activities.GalaxieActivity">
 
     <TextView
         android:id="@+id/playersTitle"
