@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -31,11 +32,11 @@ public class FleetActivity extends AppCompatActivity implements OnSelectedShipLi
     private List<Ship> ships;
     private int size;
     private TextView chosenFleet;
-    private List<Ship> shipsForAttack  = new ArrayList<>();
     private ListView fleetListView;
     private Button attackBtn;
-    private ArrayList<Ship> arrayShips;
+    private ArrayList<Ship> arrayShips  = new ArrayList<>();;
     private HashMap<String, Integer> attackingFleet = new HashMap<>();
+    private ImageView shipImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class FleetActivity extends AppCompatActivity implements OnSelectedShipLi
         fleetListView = (ListView) findViewById(R.id.FleetListView);
         chosenFleet = (TextView) findViewById(R.id.chosen_fleet_textView);
         token = Tools.getToken(getApplicationContext());
+        shipImage = (ImageView) findViewById(R.id.ship_image);
         getFleetRequest(token);
 
     }
@@ -62,10 +64,11 @@ public class FleetActivity extends AppCompatActivity implements OnSelectedShipLi
 
                     size = response.body().getSize();
                     if (size == 0) {
+                        shipImage.setVisibility(View.VISIBLE);
                         Tools.showToast(getApplicationContext(), "You have no ships yet!");
                     } else {
+                        shipImage.setVisibility(View.INVISIBLE);
                         ships = response.body().getShips();
-                        arrayShips = new ArrayList<Ship>(ships);
                         fleetListView.setAdapter(new ShipsArrayAdapter(getApplicationContext(), ships, FleetActivity.this));
                         attackBtn = (Button) findViewById(R.id.attackbtn);
                         attackBtn.setOnClickListener(
@@ -89,6 +92,17 @@ public class FleetActivity extends AppCompatActivity implements OnSelectedShipLi
     }
 
     public void showAttackActivity() {
+        //prepare the fleet
+        for (String chosenShip:attackingFleet.keySet()) {
+            Ship ship = new Ship();
+            ship.setIdFromName(chosenShip);
+            ship.setAmount(attackingFleet.get(chosenShip));
+            arrayShips.add(ship);
+        }
+        if (arrayShips.isEmpty()) {
+            Tools.showToast(getApplicationContext(), "Choose your ships before attacking!");
+            return;
+        }
         Intent myIntent = new Intent(getApplicationContext(),AttackActivity.class);
         myIntent.putExtra("yourShips", arrayShips);
         startActivityForResult(myIntent,2);

@@ -40,7 +40,7 @@ public class ShipsArrayAdapter extends ArrayAdapter {
 
         final Ship currentShip = values.get(position);
         shipName.setText(currentShip.getName());
-        if(currentShip.getAmount() != null) {
+        if(currentShip.getAmount() != null && currentShip.getAmount() != 0) {
             mSeekBar.setMax(100);
             mSeekBar.setProgress(currentShip.getProgress()*(mSeekBar.getMax())/currentShip.getAmount());
             shipAmount.setText("Dispo " + currentShip.getAmount().toString());

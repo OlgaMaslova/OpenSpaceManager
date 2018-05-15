@@ -113,23 +113,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="15dp"
         android:orientation="horizontal">
         <Button
             android:id="@+id/getReportBtn"
-            android:layout_width="250dp"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:background="@drawable/button_border"
             android:text="Show report number"
             android:textColor="@android:color/background_light"
-            android:textSize="20sp"
-            android:layout_marginTop="15dp"
+            android:textSize="18sp"
+
+            android:layout_marginStart="16dp"
             android:layout_gravity="center_horizontal"
             />
 
 
         <Spinner
             android:id="@+id/spinner_report"
-            android:layout_width="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:background="@android:drawable/btn_dropdown"
             android:spinnerMode="dropdown"/>

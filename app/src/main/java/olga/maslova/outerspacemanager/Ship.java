@@ -70,6 +70,22 @@ public class Ship implements Serializable {
         return amount;
     }
 
+    public Integer getProgress() {
+        return progress;
+    }
+
+    public void setProgress(Integer progress) {
+        this.progress = progress;
+    }
+
+    public void setShipId(Integer shipId) {
+        this.shipId = shipId;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
     public void setShipName(Integer shipId) {
         switch (shipId) {
             case 0:
@@ -89,12 +105,25 @@ public class Ship implements Serializable {
                 break;
         }
     }
-
-    public Integer getProgress() {
-        return progress;
+    public void setIdFromName(String name) {
+        switch (name) {
+            case "Chasseur léger":
+                this.shipId = 0;
+                break;
+            case "Chasseur lourd":
+                this.shipId = 1;
+                break;
+            case "Sonde d'espionnage":
+                this.shipId = 2;
+                break;
+            case "Destroyer":
+                this.shipId = 3;
+                break;
+            case "Etoile de la mort":
+                this.shipId = 4;
+                break;
+        }
     }
 
-    public void setProgress(Integer progress) {
-        this.progress = progress;
-    }
+
 }
